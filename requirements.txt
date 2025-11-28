@@ -1,0 +1,6 @@
+adk-python
+openai
+requests
+pandas
+flask
+rich

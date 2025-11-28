@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  qaops-orchestrator:
+    build: .
+    container_name: qaops-orchestrator
+    ports:
+      - "8080:8080"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - JENKINS_URL=${JENKINS_URL}
+      - JIRA_URL=${JIRA_URL}
+      - GRAFANA_URL=${GRAFANA_URL}
+      - LOG_LEVEL=${LOG_LEVEL}
+    volumes:
+      - ./memory_bank.json:/app/memory_bank.json
+      - ./data/sample_logs:/app/data/sample_logs
+    restart: unless-stopped

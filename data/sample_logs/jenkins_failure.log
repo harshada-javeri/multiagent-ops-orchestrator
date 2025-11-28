@@ -1,0 +1,20 @@
+[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'
+[2025-11-28 10:30:05] INFO: Checking out code from git repository...
+[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...
+[2025-11-28 10:32:15] INFO: Running tests...
+[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication
+java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:96)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertTrue(Assert.java:44)
+	at org.testng.Assert.assertTrue(Assert.java:54)
+	at com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)
+[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser
+java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE

@@ -1,0 +1,17 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.9.1
+    hooks:
+      - id: black
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.1
+    hooks:
+      - id: mypy
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v2.17.4
+    hooks:
+      - id: pylint
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
