@@ -1,5 +1,5 @@
 from adk import Agent, Message
-from utils.logger import setup_logger
+from utils.logger import get_logger
 
 class TestDiagnosticsAgent(Agent):
     """
@@ -7,7 +7,7 @@ class TestDiagnosticsAgent(Agent):
     """
     def __init__(self, name: str):
         super().__init__(name)
-        self.logger = setup_logger(self.__class__.__name__)
+        self.logger = get_logger(self.__class__.__name__)
 
     def process(self, message: Message) -> Message:
         """

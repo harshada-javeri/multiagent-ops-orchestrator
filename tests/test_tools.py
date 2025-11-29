@@ -15,7 +15,7 @@ def test_jenkins_tool():
 def test_jira_tool():
     tool = JiraTool()
     ticket = tool.create_ticket("Test failure", "Details...")
-    assert "JIRA" in ticket
+    assert "mock-jira.local" in ticket
 
 
 def test_grafana_tool():

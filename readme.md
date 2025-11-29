@@ -461,6 +461,8 @@ print(f"JIRA Ticket: {result.content['ticket']}")
 ### Run Unit Tests
 
 ```bash
+# Activate virtual environment and run tests
+source test-venv/bin/activate
 pytest tests/test_agents.py -v
 pytest tests/test_tools.py -v
 ```
@@ -468,6 +470,11 @@ pytest tests/test_tools.py -v
 ### Run All Tests
 
 ```bash
+# Activate virtual environment and run tests
+source test-venv/bin/activate
+pytest tests/ -v
+
+# Run with coverage
 pytest tests/ -v --cov=agents --cov=tools
 ```
 
