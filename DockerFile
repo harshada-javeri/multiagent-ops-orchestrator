@@ -1,8 +1,22 @@
-FROM python:3.10-slim AS base
+FROM python:3.11-slim
+
 WORKDIR /app
+
+# Copy requirements first for better caching
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-FROM base AS final
+# Copy application code
 COPY . .
-CMD ["python", "main_orchestrator.py"]
+
+# Create models directory
+RUN mkdir -p models
+
+# Train agents (create model artifacts)
+RUN python train.py
+
+# Expose port
+EXPOSE 9696
+
+# Run the web service
+CMD ["python", "serve.py"]

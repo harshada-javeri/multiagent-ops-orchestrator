@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "agents": [
+    "diagnostics",
+    "root_cause",
+    "action_planner"
+  ],
+  "trained_at": "/Users/harshada/Project/multiagent-ops-orchestrator"
+}
