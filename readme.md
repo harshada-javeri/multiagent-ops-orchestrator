@@ -758,3 +758,30 @@ multiagent-ops-orchestrator/
 **Last Updated**: December 2024  
 **Version**: 1.0  
 **Status**: Production-Ready
+
+
+## 🔗 Integrations
+
+### AWS AgentCore
+Production-ready agent runtime with:
+- Serverless scaling
+- Gateway for tool access
+- Built-in observability
+
+**Setup**: See `INTEGRATION_GUIDE.md`
+
+### Okahu Observability
+AI tracing and monitoring:
+- Agent execution traces
+- Performance metrics
+- Cost tracking
+
+**Files**: `integrations/okahu_integration.py`
+
+### Usage
+```python
+from integrated_orchestrator import IntegratedQAOpsOrchestrator
+
+orchestrator = IntegratedQAOpsOrchestrator()
+result = orchestrator.analyze_with_observability(ci_logs)
+```

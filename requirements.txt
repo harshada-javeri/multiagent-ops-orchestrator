@@ -5,3 +5,5 @@ pytest>=9.0.0
 pandas>=2.0.0
 openpyxl>=3.0.0
 flask>=2.3.0
+boto3>=1.34.0
+monocle-apptrace>=0.1.0

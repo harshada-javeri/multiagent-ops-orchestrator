@@ -4,6 +4,9 @@ Prediction script for QAOps Multi-Agent System
 Loads trained agents and runs inference
 """
 
+from monocle_apptrace import setup_monocle_telemetry
+setup_monocle_telemetry(workflow_name="qaops-multiagent-orchestrator")
+
 import json
 import pickle
 from pathlib import Path
