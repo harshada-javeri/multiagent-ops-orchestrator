@@ -56,7 +56,30 @@ docker build -t qaops-orchestrator .
 docker run -p 9696:9696 qaops-orchestrator
 ```
 
-## 🔌 API Usage
+## � Okahu Tracing & Observability
+
+**View your multi-agent system in action with Okahu!**
+
+Traces are automatically sent to Okahu for all agent executions, LLM calls, and tool invocations.
+
+### Quick Setup (5 minutes)
+
+1. **Get API Key**: Visit [portal.okahu.co](https://portal.okahu.co/en/apps/) and login
+2. **Set Environment**:
+   ```powershell
+   # Windows
+   $env:OKAHU_API_KEY = "your-key"
+   
+   # Linux/Mac
+   export OKAHU_API_KEY="your-key"
+   ```
+3. **Run Application**: `python predict.py` or `python serve.py`
+4. **Create App in Okahu**: Browse Discovered Components → Select `qaops-multiagent-orchestrator` → Save
+5. **View Traces**: See agent execution flow, performance metrics, and LLM token usage
+
+📖 **Detailed Guide**: [OKAHU_QUICKSTART.md](OKAHU_QUICKSTART.md) | **Full Setup**: [OKAHU_APPLICATION_SETUP.md](OKAHU_APPLICATION_SETUP.md)
+
+## �🔌 API Usage
 
 ### Health Check
 ```bash
