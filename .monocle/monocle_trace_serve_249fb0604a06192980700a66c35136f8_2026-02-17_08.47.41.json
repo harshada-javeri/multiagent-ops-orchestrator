@@ -1,0 +1,137 @@
+[{
+    "name": "flask.app.Flask.wsgi_app",
+    "context": {
+        "trace_id": "249fb0604a06192980700a66c35136f8",
+        "span_id": "a28f4467f257221b",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "51b4bbfe6404e29d",
+    "start_time": "2026-02-17T03:17:37.117282Z",
+    "end_time": "2026-02-17T03:17:37.118973Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "predict",
+        "entity.1.method": "GET",
+        "entity.1.route": "/apple-touch-icon.png",
+        "entity.1.url": "http://127.0.0.1:9696/apple-touch-icon.png",
+        "span.type": "http.process",
+        "entity.count": 1
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "serve"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "249fb0604a06192980700a66c35136f8",
+        "span_id": "51b4bbfe6404e29d",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "4d1cf7978f7a96d3",
+    "start_time": "2026-02-17T03:17:37.117185Z",
+    "end_time": "2026-02-17T03:17:37.119000Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "predict",
+        "span.type": "workflow",
+        "entity.1.name": "predict",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "serve"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "flask.app.Flask.wsgi_app",
+    "context": {
+        "trace_id": "249fb0604a06192980700a66c35136f8",
+        "span_id": "4d1cf7978f7a96d3",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "b63d8fd092eb17c8",
+    "start_time": "2026-02-17T03:17:37.116795Z",
+    "end_time": "2026-02-17T03:17:37.119053Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/flask/app.py:1536",
+        "workflow.name": "predict",
+        "entity.1.method": "GET",
+        "entity.1.route": "/apple-touch-icon.png",
+        "entity.1.url": "http://127.0.0.1:9696/apple-touch-icon.png",
+        "span.type": "http.process",
+        "entity.count": 1
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "serve"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "249fb0604a06192980700a66c35136f8",
+        "span_id": "b63d8fd092eb17c8",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-02-17T03:17:37.116655Z",
+    "end_time": "2026-02-17T03:17:37.119069Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/flask/app.py:1536",
+        "workflow.name": "predict",
+        "span.type": "workflow",
+        "entity.1.name": "predict",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "serve"
+        },
+        "schema_url": ""
+    }
+}
+]

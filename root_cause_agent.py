@@ -5,7 +5,6 @@ import os
 
 try:
     from google import genai
-    from google.genai import types
     GENAI_AVAILABLE = True
 except ImportError:
     GENAI_AVAILABLE = False
@@ -22,10 +21,7 @@ class RootCauseAnalyzerAgent(Agent):
         api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 
         if GENAI_AVAILABLE and api_key:
-            self.client = genai.Client(
-                api_key=api_key,
-                http_options=types.HttpOptions(api_version="v1")
-            )
+            self.client = genai.Client(api_key=api_key)
             self.logger.info("Gemini client initialized successfully")
         else:
             self.client = None
@@ -37,7 +33,7 @@ class RootCauseAnalyzerAgent(Agent):
         if self.client:
             try:
                 response = self.client.models.generate_content(
-                    model="models/gemini-1.5-flash",
+                    model="gemini-2.5-flash",
                     contents=f"Summarize root causes from logs: {failed_tests}"
                 )
                 analysis_text = response.text

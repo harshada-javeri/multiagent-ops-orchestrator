@@ -4,8 +4,11 @@ Flask web service for QAOps Multi-Agent System
 Provides REST API endpoints for CI/CD failure analysis
 """
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="qaops-multiagent-orchestrator")
+setup_monocle_telemetry(workflow_name="serve")
 
 from flask import Flask, request, jsonify
 import os

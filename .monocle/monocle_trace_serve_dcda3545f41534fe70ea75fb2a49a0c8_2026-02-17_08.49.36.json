@@ -1,0 +1,137 @@
+[{
+    "name": "flask.app.Flask.wsgi_app",
+    "context": {
+        "trace_id": "dcda3545f41534fe70ea75fb2a49a0c8",
+        "span_id": "30f6c3e4aec510e4",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "cd34e6a946a776b4",
+    "start_time": "2026-02-17T03:19:31.893432Z",
+    "end_time": "2026-02-17T03:19:31.895938Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "predict",
+        "entity.1.method": "GET",
+        "entity.1.route": "/",
+        "entity.1.url": "http://127.0.0.1:9696/",
+        "span.type": "http.process",
+        "entity.count": 1
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "serve"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "dcda3545f41534fe70ea75fb2a49a0c8",
+        "span_id": "cd34e6a946a776b4",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "d6959648f42cf991",
+    "start_time": "2026-02-17T03:19:31.893363Z",
+    "end_time": "2026-02-17T03:19:31.895989Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "predict",
+        "span.type": "workflow",
+        "entity.1.name": "predict",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "serve"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "flask.app.Flask.wsgi_app",
+    "context": {
+        "trace_id": "dcda3545f41534fe70ea75fb2a49a0c8",
+        "span_id": "d6959648f42cf991",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "b32412c5c0f11acc",
+    "start_time": "2026-02-17T03:19:31.890607Z",
+    "end_time": "2026-02-17T03:19:31.896022Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/flask/app.py:1536",
+        "workflow.name": "predict",
+        "entity.1.method": "GET",
+        "entity.1.route": "/",
+        "entity.1.url": "http://127.0.0.1:9696/",
+        "span.type": "http.process",
+        "entity.count": 1
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "serve"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "dcda3545f41534fe70ea75fb2a49a0c8",
+        "span_id": "b32412c5c0f11acc",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-02-17T03:19:31.889347Z",
+    "end_time": "2026-02-17T03:19:31.896029Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/flask/app.py:1536",
+        "workflow.name": "predict",
+        "span.type": "workflow",
+        "entity.1.name": "predict",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "serve"
+        },
+        "schema_url": ""
+    }
+}
+]

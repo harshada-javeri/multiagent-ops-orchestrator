@@ -4,31 +4,36 @@ Prediction script for QAOps Multi-Agent System
 Loads trained agents and runs inference
 """
 
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env file
+
 from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="qaops-multiagent-orchestrator")
+setup_monocle_telemetry(workflow_name="predict")
 
 import json
-import pickle
 from pathlib import Path
 from adk import Message
+from agents.test_diagnostics_agent import TestDiagnosticsAgent
+from agents.root_cause_agent import RootCauseAnalyzerAgent
+from agents.action_planner_agent import ActionPlannerAgent
 from utils.logger import get_logger
 
 class QAOpsPredictor:
     def __init__(self, model_path="models"):
         self.logger = get_logger("QAOpsPredictor")
         self.model_path = Path(model_path)
-        self.agents = self._load_agents()
+        self.agents = self._initialize_agents()
     
-    def _load_agents(self):
-        """Load trained agents"""
-        try:
-            with open(self.model_path / "agents.pkl", "rb") as f:
-                agents = pickle.load(f)
-            self.logger.info("Agents loaded successfully")
-            return agents
-        except FileNotFoundError:
-            self.logger.error("No trained agents found. Run train.py first.")
-            raise
+    def _initialize_agents(self):
+        """Initialize agents dynamically at runtime"""
+        self.logger.info("Initializing agents...")
+        agents = {
+            'diagnostics': TestDiagnosticsAgent("TestDiagnostics"),
+            'root_cause': RootCauseAnalyzerAgent("RootCause"),
+            'action_planner': ActionPlannerAgent("ActionPlanner")
+        }
+        self.logger.info("Agents initialized successfully")
+        return agents
     
     def predict(self, ci_logs: str) -> dict:
         """

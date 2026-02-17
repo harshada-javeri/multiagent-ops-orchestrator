@@ -5,7 +5,6 @@ Trains agents and saves model artifacts
 """
 
 import json
-import pickle
 from pathlib import Path
 from agents.test_diagnostics_agent import TestDiagnosticsAgent
 from agents.root_cause_agent import RootCauseAnalyzerAgent
@@ -13,7 +12,7 @@ from agents.action_planner_agent import ActionPlannerAgent
 from utils.logger import get_logger
 
 def train_agents():
-    """Train and save agent models"""
+    """Initialize and configure agents"""
     logger = get_logger("TrainingPipeline")
     
     # Initialize agents
@@ -27,21 +26,19 @@ def train_agents():
     models_dir = Path("models")
     models_dir.mkdir(exist_ok=True)
     
-    # Save agent configurations
+    # Save agent configurations only (NOT agent objects)
     agent_config = {
         'version': '1.0',
         'agents': list(agents.keys()),
-        'trained_at': str(Path.cwd())
+        'trained_at': str(Path.cwd()),
+        'note': 'Agent objects are instantiated at runtime, not pickled'
     }
     
     with open(models_dir / "agent_config.json", "w") as f:
         json.dump(agent_config, f, indent=2)
     
-    # Save agents (simplified - in real scenario would save trained models)
-    with open(models_dir / "agents.pkl", "wb") as f:
-        pickle.dump(agents, f)
-    
-    logger.info(f"Agents trained and saved to {models_dir}")
+    logger.info("Agents initialized successfully (no pickling required)")
+    logger.info(f"Configuration saved to {models_dir / 'agent_config.json'}")
     return models_dir
 
 if __name__ == "__main__":
