@@ -7,7 +7,7 @@ from typing import Any
 from utils.logger import get_logger
 
 from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="your_workflow_name")
+setup_monocle_telemetry(workflow_name="cicd-workflow")
 class ActionPlannerAgent(Agent):
     """
     Agent that proposes fixes or creates JIRA tickets based on root cause analysis.
