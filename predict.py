@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
 
 from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="predict")
+setup_monocle_telemetry(workflow_name="multiagent-orchestrator")
 
 import json
 from pathlib import Path
