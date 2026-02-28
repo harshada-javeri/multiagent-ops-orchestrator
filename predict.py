@@ -7,8 +7,14 @@ Loads trained agents and runs inference
 from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
 
-from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="multiagent-orchestrator")
+from monocle_apptrace.instrumentation.common import setup_monocle_telemetry
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from monocle_apptrace.exporters.okahu.okahu_exporter import OkahuSpanExporter
+
+setup_monocle_telemetry(
+    workflow_name="multiagent-orchestrator",
+    span_processors=[BatchSpanProcessor(OkahuSpanExporter())]
+)
 
 import json
 from pathlib import Path
