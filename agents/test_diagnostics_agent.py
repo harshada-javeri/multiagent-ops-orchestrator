@@ -1,7 +1,10 @@
 from adk import Agent, Message
 from utils.logger import get_logger
+from monocle_apptrace import setup_monocle_telemetry
+setup_monocle_telemetry(workflow_name="multiagent-orchestrator")
 
 class TestDiagnosticsAgent(Agent):
+    __test__ = False
     """
     Agent that parses CI logs to identify failed tests.
     """

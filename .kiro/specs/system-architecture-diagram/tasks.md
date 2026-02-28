@@ -95,6 +95,14 @@ This implementation plan creates a comprehensive system architecture diagram for
     - Explain arrow types (solid, dashed, dotted, thick)
     - Document color coding if used
     - _Requirements: 6.4_
+  
+  - [ ] 7.4 Add operational instructions section
+    - Document steps to run agents with Monocle telemetry enabled
+    - Reference setup_monocle_telemetry(workflow_name="multiagent-orchestrator") calls in agent files
+    - Provide instructions to access traces on portal.okahu.ai
+    - List prerequisites (Okahu API key setup)
+    - Include workflow name used for tracing
+    - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
 
 - [ ] 8. Checkpoint - Manual verification
   - Verify diagram renders correctly in GitHub preview
@@ -144,11 +152,15 @@ This implementation plan creates a comprehensive system architecture diagram for
   
   - [ ]* 9.10 Write property test for documentation structure
     - **Property 9: Documentation Structure Completeness**
-    - **Validates: Requirements 7.2, 7.3**
+    - **Validates: Requirements 7.2, 7.3, 8.1, 8.2, 8.3**
   
   - [ ]* 9.11 Write property test for legend presence
     - **Property 10: Legend or Key Included**
     - **Validates: Requirements 6.4**
+  
+  - [ ]* 9.12 Write property test for operational instructions
+    - **Property 11: Operational Instructions Completeness**
+    - **Validates: Requirements 8.1, 8.2, 8.3, 8.4, 8.5**
 
 - [ ]* 10. Write unit tests for specific scenarios
   - [ ]* 10.1 Write unit test for file creation
