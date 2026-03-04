@@ -1,0 +1,211 @@
+[{
+    "name": "openai.resources.chat.completions.Completions.create",
+    "context": {
+        "trace_id": "736b65ac568d44fb3df7f96b33129d63",
+        "span_id": "1ff84324d3d890f9",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "dd53d8654dbcfc5e",
+    "start_time": "2026-03-04T11:36:31.402126Z",
+    "end_time": "2026-03-04T11:36:44.990495Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "inference.modelapi"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "openai.resources.chat.completions.Completions.create",
+    "context": {
+        "trace_id": "736b65ac568d44fb3df7f96b33129d63",
+        "span_id": "dd53d8654dbcfc5e",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "2514a8b209ac0b61",
+    "start_time": "2026-03-04T11:36:31.401886Z",
+    "end_time": "2026-03-04T11:36:44.991175Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_legacy_response.py:367",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "inference.modelapi"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "litellm.llms.openai.openai.OpenAIChatCompletion.completion",
+    "context": {
+        "trace_id": "736b65ac568d44fb3df7f96b33129d63",
+        "span_id": "2514a8b209ac0b61",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "fecafa47d2dbd316",
+    "start_time": "2026-03-04T11:36:31.399386Z",
+    "end_time": "2026-03-04T11:36:45.015991Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.openai",
+        "entity.1.provider_name": "api.openai.com",
+        "entity.1.inference_endpoint": "https://api.openai.com/v1",
+        "entity.2.name": "gpt-4o-mini",
+        "entity.2.type": "model.llm.gpt-4o-mini",
+        "span.type": "inference",
+        "entity.count": 2,
+        "span.subtype": "turn_end"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:36:31.399442Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:36:45.015896Z",
+            "attributes": {}
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:36:45.015935Z",
+            "attributes": {}
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "litellm.llms.openai.openai.OpenAIChatCompletion.completion",
+    "context": {
+        "trace_id": "736b65ac568d44fb3df7f96b33129d63",
+        "span_id": "fecafa47d2dbd316",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "211537498ee4e9ac",
+    "start_time": "2026-03-04T11:36:31.398924Z",
+    "end_time": "2026-03-04T11:36:45.016119Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/main.py:2581",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.openai",
+        "entity.1.provider_name": "api.openai.com",
+        "entity.1.inference_endpoint": "https://api.openai.com/v1",
+        "entity.2.name": "gpt-4o-mini",
+        "entity.2.type": "model.llm.gpt-4o-mini",
+        "last.inference": "2514a8b209ac0b61:*",
+        "span.type": "inference",
+        "entity.count": 2,
+        "span.subtype": "turn_end"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:36:31.399019Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:36:45.016079Z",
+            "attributes": {}
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:36:45.016090Z",
+            "attributes": {}
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "736b65ac568d44fb3df7f96b33129d63",
+        "span_id": "211537498ee4e9ac",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-04T11:36:31.398842Z",
+    "end_time": "2026-03-04T11:36:45.016134Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/main.py:2581",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.litellm",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic",
+        "last.inference": "2514a8b209ac0b61:*"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

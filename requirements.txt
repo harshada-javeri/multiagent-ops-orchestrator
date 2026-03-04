@@ -1,4 +1,6 @@
 google-genai>=0.6.0
+litellm>=1.40.0
+google-adk>=0.1.0
 python-dotenv>=1.0.0
 requests>=2.31.0
 pytest>=9.0.0

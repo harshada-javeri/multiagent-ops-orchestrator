@@ -1,0 +1,195 @@
+[{
+    "name": "litellm.llms.openai.openai.OpenAIChatCompletion.completion",
+    "context": {
+        "trace_id": "fc009686a94db8d6ec06d2076e2a9959",
+        "span_id": "c5832f35b299aa2c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "04ab218cd09acbbd",
+    "start_time": "2026-03-04T11:10:09.931594Z",
+    "end_time": "2026-03-04T11:10:09.935919Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.openai",
+        "entity.1.provider_name": "api.openai.com",
+        "entity.1.inference_endpoint": "https://api.openai.com/v1",
+        "entity.2.name": "gpt-4o-mini",
+        "entity.2.type": "model.llm.gpt-4o-mini",
+        "span.type": "inference",
+        "entity.count": 2,
+        "span.subtype": "turn_end"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:10:09.931646Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:10:09.932313Z",
+            "attributes": {
+                "error_code": "error",
+                "response": "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:10:09.932321Z",
+            "attributes": {
+                "finish_reason": "error"
+            }
+        },
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:10:09.935911Z",
+            "attributes": {
+                "exception.type": "litellm.llms.openai.common_utils.OpenAIError",
+                "exception.message": "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 845, in completion\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 747, in completion\n    openai_client: OpenAI = self._get_openai_client(  # type: ignore\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 396, in _get_openai_client\n    _new_client = OpenAI(\n                  ^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_client.py\", line 139, in __init__\n    raise OpenAIError(\nopenai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 856, in completion\n    raise OpenAIError(\nlitellm.llms.openai.common_utils.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "litellm.llms.openai.openai.OpenAIChatCompletion.completion",
+    "context": {
+        "trace_id": "fc009686a94db8d6ec06d2076e2a9959",
+        "span_id": "04ab218cd09acbbd",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "e534de295c5b7332",
+    "start_time": "2026-03-04T11:10:09.931170Z",
+    "end_time": "2026-03-04T11:10:09.936530Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/main.py:2581",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.openai",
+        "entity.1.provider_name": "api.openai.com",
+        "entity.1.inference_endpoint": "https://api.openai.com/v1",
+        "entity.2.name": "gpt-4o-mini",
+        "entity.2.type": "model.llm.gpt-4o-mini",
+        "last.inference": "c5832f35b299aa2c:*",
+        "span.type": "inference",
+        "entity.count": 2,
+        "span.subtype": "turn_end"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:10:09.931254Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:10:09.935988Z",
+            "attributes": {
+                "error_code": "error",
+                "response": "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:10:09.935995Z",
+            "attributes": {
+                "finish_reason": "error"
+            }
+        },
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:10:09.936525Z",
+            "attributes": {
+                "exception.type": "litellm.llms.openai.common_utils.OpenAIError",
+                "exception.message": "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 845, in completion\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 747, in completion\n    openai_client: OpenAI = self._get_openai_client(  # type: ignore\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 396, in _get_openai_client\n    _new_client = OpenAI(\n                  ^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_client.py\", line 139, in __init__\n    raise OpenAIError(\nopenai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 856, in completion\n    raise OpenAIError(\nlitellm.llms.openai.common_utils.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "fc009686a94db8d6ec06d2076e2a9959",
+        "span_id": "e534de295c5b7332",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-04T11:10:09.931096Z",
+    "end_time": "2026-03-04T11:10:09.937062Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/main.py:2581",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.litellm",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic",
+        "last.inference": "c5832f35b299aa2c:*"
+    },
+    "events": [
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:10:09.937058Z",
+            "attributes": {
+                "exception.type": "litellm.llms.openai.common_utils.OpenAIError",
+                "exception.message": "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 845, in completion\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 747, in completion\n    openai_client: OpenAI = self._get_openai_client(  # type: ignore\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 396, in _get_openai_client\n    _new_client = OpenAI(\n                  ^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_client.py\", line 139, in __init__\n    raise OpenAIError(\nopenai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 115, in monocle_wrapper_span_processor\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, False, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 856, in completion\n    raise OpenAIError(\nlitellm.llms.openai.common_utils.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

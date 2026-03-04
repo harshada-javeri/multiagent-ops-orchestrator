@@ -325,7 +325,7 @@ Message(
 - **Network**: Access to fetch CI logs, Gemini API, JIRA, Grafana
 
 ### API Keys & Credentials
-- `GEMINI_API_KEY`: Google Gemini LLM access (for root-cause analysis)
+- `GOOGLE_API_KEY`: Google Gemini LLM access (for root-cause analysis)
 - `JIRA_URL`, `JIRA_USER`, `JIRA_TOKEN`: JIRA integration for ticket creation
 - `JENKINS_URL`: Jenkins CI/CD instance URL
 - `GRAFANA_URL`: Grafana instance for metrics (optional)
@@ -370,7 +370,7 @@ pip install -r requirements.txt
 cp .env.example .env
 
 # Edit .env with your credentials
-export GEMINI_API_KEY="your-gemini-api-key"
+export GOOGLE_API_KEY="your-gemini-api-key"
 export JIRA_URL="https://your-jira-instance.atlassian.net"
 export JIRA_USER="your-jira-email@company.com"
 export JIRA_TOKEN="your-jira-api-token"
@@ -406,7 +406,7 @@ Create a `.env` file in the project root:
 
 ```env
 # LLM Configuration
-GEMINI_API_KEY=your-gemini-api-key
+GOOGLE_API_KEY=your-gemini-api-key
 
 # CI/CD Integration
 JENKINS_URL=https://jenkins.your-company.com
@@ -486,7 +486,7 @@ print(f"JIRA Ticket: {result.content['ticket']}")
 # Example GitHub Actions integration
 - name: Run QAOps Orchestrator
   env:
-    GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
     JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
   run: |
     python main_orchestrator.py < ${{ job.logs }}
@@ -598,7 +598,7 @@ multiagent-ops-orchestrator/
 | Issue | Solution |
 |-------|----------|
 | **Virtual environment not activating** | Ensure Python is in PATH; use full path: `python3 -m venv venv` |
-| **`GEMINI_API_KEY` not recognized** | Set in `.env` file or export: `export GEMINI_API_KEY="..."` |
+| **`GOOGLE_API_KEY` not recognized** | Set in `.env` file or export: `export GOOGLE_API_KEY="..."` |
 | **JIRA authentication fails** | Verify token scope includes "issue:create"; test with JIRA CLI |
 | **Slow pipeline execution** | Reduce log size (>5MB can slow LLM); batch analyses; check network latency |
 | **Docker build fails** | Ensure Docker daemon is running; check `requirements.txt` for version conflicts |

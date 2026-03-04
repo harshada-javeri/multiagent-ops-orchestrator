@@ -1,3 +1,6 @@
+
+from dotenv import load_dotenv
+load_dotenv()
 #!/usr/bin/env python3
 """
 Prediction script for QAOps Multi-Agent System
@@ -7,14 +10,11 @@ Loads trained agents and runs inference
 from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
 
-from monocle_apptrace.instrumentation.common import setup_monocle_telemetry
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from monocle_apptrace.exporters.okahu.okahu_exporter import OkahuSpanExporter
+import os
 
-setup_monocle_telemetry(
-    workflow_name="multiagent-orchestrator",
-    span_processors=[BatchSpanProcessor(OkahuSpanExporter())]
-)
+
+from monocle_apptrace import setup_monocle_telemetry
+setup_monocle_telemetry(workflow_name="multiagent-orchestrator")
 
 import json
 from pathlib import Path
@@ -29,7 +29,12 @@ class QAOpsPredictor:
         self.logger = get_logger("QAOpsPredictor")
         self.model_path = Path(model_path)
         self.agents = self._initialize_agents()
+        # Removed LLM agent selection as per new architecture
     
+    def _select_llm_agent(self):
+        # Removed LLM agent selection method as per new architecture
+        pass
+
     def _initialize_agents(self):
         """Initialize agents dynamically at runtime"""
         self.logger.info("Initializing agents...")

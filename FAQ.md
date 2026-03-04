@@ -20,7 +20,7 @@ A: `GET /health` for health checks, `POST /predict` for log analysis, and `GET /
 A: Yes, use Docker: `docker build -t qaops -f DockerFile .` then `docker run -p 9696:9696 qaops`.
 
 **Q: What if I don't have a Gemini API key?**
-A: The system works with mock analysis for testing. For production, obtain a Google Gemini API key and set `GEMINI_API_KEY` environment variable.
+A: The system works with mock analysis for testing. For production, obtain a Google Gemini API key and set `GOOGLE_API_KEY` environment variable.
 
 **Q: How accurate is the analysis?**
 A: Current system achieves 87% classification accuracy with 75% MTTR reduction in testing scenarios.

@@ -150,7 +150,7 @@ Each trace contains:
       "name": "gemini.generate_content",
       "duration_ms": 980,
       "attributes": {
-        "model": "gemini-1.5-flash",
+        "model": "gemini-2.5-flash-lite",
         "input_tokens": 512,
         "output_tokens": 256,
         "cost_usd": 0.00034

@@ -1,0 +1,323 @@
+[{
+    "name": "openai.resources.chat.completions.Completions.create",
+    "context": {
+        "trace_id": "7c7846faa67ad031682a01c1e2676246",
+        "span_id": "b2e214a148e38871",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "496a5d2d8e428a61",
+    "start_time": "2026-03-04T11:27:02.954443Z",
+    "end_time": "2026-03-04T11:27:04.319513Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "NotFoundError: Error code: 404"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "inference.modelapi"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:27:04.310122Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:27:04.310200Z",
+            "attributes": {
+                "error_code": "error",
+                "response": "Error code: 404"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:27:04.310259Z",
+            "attributes": {}
+        },
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:27:04.319475Z",
+            "attributes": {
+                "exception.type": "openai.NotFoundError",
+                "exception.message": "Error code: 404",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py\", line 1204, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1297, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1070, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.NotFoundError: Error code: 404\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "openai.resources.chat.completions.Completions.create",
+    "context": {
+        "trace_id": "7c7846faa67ad031682a01c1e2676246",
+        "span_id": "496a5d2d8e428a61",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "245fafe6e80bbb26",
+    "start_time": "2026-03-04T11:27:02.954212Z",
+    "end_time": "2026-03-04T11:27:04.321322Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "NotFoundError: Error code: 404"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_legacy_response.py:367",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "inference.modelapi"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:27:04.319850Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:27:04.319880Z",
+            "attributes": {
+                "error_code": "error",
+                "response": "Error code: 404"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:27:04.319903Z",
+            "attributes": {}
+        },
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:27:04.321307Z",
+            "attributes": {
+                "exception.type": "openai.NotFoundError",
+                "exception.message": "Error code: 404",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py\", line 1204, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1297, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1070, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.NotFoundError: Error code: 404\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "litellm.llms.openai.openai.OpenAIChatCompletion.completion",
+    "context": {
+        "trace_id": "7c7846faa67ad031682a01c1e2676246",
+        "span_id": "245fafe6e80bbb26",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "1d6b4f68a50889cd",
+    "start_time": "2026-03-04T11:27:02.951954Z",
+    "end_time": "2026-03-04T11:27:04.337164Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "OpenAIError: Error code: 404"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.openai",
+        "entity.1.provider_name": "generativelanguage.googleapis.com",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com",
+        "entity.2.name": "gpt-4o-mini",
+        "entity.2.type": "model.llm.gpt-4o-mini",
+        "span.type": "inference",
+        "entity.count": 2,
+        "span.subtype": "turn_end"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:27:02.952020Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:27:04.334697Z",
+            "attributes": {
+                "error_code": "error",
+                "response": "Error code: 404"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:27:04.334722Z",
+            "attributes": {
+                "finish_reason": "error"
+            }
+        },
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:27:04.337152Z",
+            "attributes": {
+                "exception.type": "litellm.llms.openai.common_utils.OpenAIError",
+                "exception.message": "Error code: 404",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 845, in completion\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 773, in completion\n    ) = self.make_sync_openai_chat_completion_request(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py\", line 344, in sync_wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 502, in make_sync_openai_chat_completion_request\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 477, in make_sync_openai_chat_completion_request\n    raw_response = openai_client.chat.completions.with_raw_response.create(\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_legacy_response.py\", line 367, in wrapped\n    return cast(LegacyAPIResponse[R], func(*args, **kwargs))\n                                      ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py\", line 1204, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1297, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1070, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.NotFoundError: Error code: 404\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 856, in completion\n    raise OpenAIError(\nlitellm.llms.openai.common_utils.OpenAIError: Error code: 404\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "litellm.llms.openai.openai.OpenAIChatCompletion.completion",
+    "context": {
+        "trace_id": "7c7846faa67ad031682a01c1e2676246",
+        "span_id": "1d6b4f68a50889cd",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "343a51a754b3b950",
+    "start_time": "2026-03-04T11:27:02.951494Z",
+    "end_time": "2026-03-04T11:27:04.339617Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "OpenAIError: Error code: 404"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/main.py:2581",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.openai",
+        "entity.1.provider_name": "generativelanguage.googleapis.com",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com",
+        "entity.2.name": "gpt-4o-mini",
+        "entity.2.type": "model.llm.gpt-4o-mini",
+        "last.inference": "245fafe6e80bbb26:*",
+        "span.type": "inference",
+        "entity.count": 2,
+        "span.subtype": "turn_end"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:27:02.951591Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:27:04.337301Z",
+            "attributes": {
+                "error_code": "error",
+                "response": "Error code: 404"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:27:04.337317Z",
+            "attributes": {
+                "finish_reason": "error"
+            }
+        },
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:27:04.339609Z",
+            "attributes": {
+                "exception.type": "litellm.llms.openai.common_utils.OpenAIError",
+                "exception.message": "Error code: 404",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 845, in completion\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 773, in completion\n    ) = self.make_sync_openai_chat_completion_request(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py\", line 344, in sync_wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 502, in make_sync_openai_chat_completion_request\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 477, in make_sync_openai_chat_completion_request\n    raw_response = openai_client.chat.completions.with_raw_response.create(\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_legacy_response.py\", line 367, in wrapped\n    return cast(LegacyAPIResponse[R], func(*args, **kwargs))\n                                      ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py\", line 1204, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1297, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1070, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.NotFoundError: Error code: 404\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 856, in completion\n    raise OpenAIError(\nlitellm.llms.openai.common_utils.OpenAIError: Error code: 404\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "7c7846faa67ad031682a01c1e2676246",
+        "span_id": "343a51a754b3b950",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-04T11:27:02.951416Z",
+    "end_time": "2026-03-04T11:27:04.341709Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "OpenAIError: Error code: 404"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/main.py:2581",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.litellm",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic",
+        "last.inference": "245fafe6e80bbb26:*"
+    },
+    "events": [
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:27:04.341696Z",
+            "attributes": {
+                "exception.type": "litellm.llms.openai.common_utils.OpenAIError",
+                "exception.message": "Error code: 404",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 845, in completion\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 773, in completion\n    ) = self.make_sync_openai_chat_completion_request(\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/litellm_core_utils/logging_utils.py\", line 344, in sync_wrapper\n    result = func(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 502, in make_sync_openai_chat_completion_request\n    raise e\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 477, in make_sync_openai_chat_completion_request\n    raw_response = openai_client.chat.completions.with_raw_response.create(\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_legacy_response.py\", line 367, in wrapped\n    return cast(LegacyAPIResponse[R], func(*args, **kwargs))\n                                      ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_utils/_utils.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/resources/chat/completions/completions.py\", line 1204, in create\n    return self._post(\n           ^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1297, in post\n    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/openai/_base_client.py\", line 1070, in request\n    raise self._make_status_error_from_response(err.response) from None\nopenai.NotFoundError: Error code: 404\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 115, in monocle_wrapper_span_processor\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, False, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/litellm/llms/openai/openai.py\", line 856, in completion\n    raise OpenAIError(\nlitellm.llms.openai.common_utils.OpenAIError: Error code: 404\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

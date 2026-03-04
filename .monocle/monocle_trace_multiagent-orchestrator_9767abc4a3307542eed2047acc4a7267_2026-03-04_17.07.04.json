@@ -1,0 +1,187 @@
+[{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "9767abc4a3307542eed2047acc4a7267",
+        "span_id": "5d554da373697a17",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "2372fe54179923fb",
+    "start_time": "2026-03-04T11:36:59.235455Z",
+    "end_time": "2026-03-04T11:37:00.618839Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-1.5-flash-latest",
+        "entity.2.type": "model.llm.gemini-1.5-flash-latest",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:36:59.235508Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:37:00.607918Z",
+            "attributes": {
+                "error_code": 404,
+                "response": "models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:37:00.607963Z",
+            "attributes": {}
+        },
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:37:00.618812Z",
+            "attributes": {
+                "exception.type": "google.genai.errors.ClientError",
+                "exception.message": "404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/models.py\", line 5474, in generate_content\n    response = self._generate_content(\n               ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/models.py\", line 4214, in _generate_content\n    response = self._api_client.request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1396, in request\n    response = self._request(http_request, http_options, stream=False)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1232, in _request\n    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 470, in __call__\n    do = self.iter(retry_state=retry_state)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 371, in iter\n    result = action(retry_state)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 413, in exc_check\n    raise retry_exc.reraise()\n          ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 184, in reraise\n    raise self.last_attempt.result()\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 473, in __call__\n    result = fn(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1209, in _request_once\n    errors.APIError.raise_for_response(response)\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/errors.py\", line 134, in raise_for_response\n    cls.raise_error(response.status_code, response_json, response)\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/errors.py\", line 159, in raise_error\n    raise ClientError(status_code, response_json, response)\ngoogle.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "9767abc4a3307542eed2047acc4a7267",
+        "span_id": "2372fe54179923fb",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "9ac9b59677ad0239",
+    "start_time": "2026-03-04T11:36:59.234999Z",
+    "end_time": "2026-03-04T11:37:00.620853Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:18",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-1.5-flash-latest",
+        "entity.2.type": "model.llm.gemini-1.5-flash-latest",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-04T11:36:59.235085Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-04T11:37:00.619073Z",
+            "attributes": {
+                "error_code": 404,
+                "response": "models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods."
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-04T11:37:00.619092Z",
+            "attributes": {}
+        },
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:37:00.620839Z",
+            "attributes": {
+                "exception.type": "google.genai.errors.ClientError",
+                "exception.message": "404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/models.py\", line 5474, in generate_content\n    response = self._generate_content(\n               ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/models.py\", line 4214, in _generate_content\n    response = self._api_client.request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1396, in request\n    response = self._request(http_request, http_options, stream=False)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1232, in _request\n    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 470, in __call__\n    do = self.iter(retry_state=retry_state)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 371, in iter\n    result = action(retry_state)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 413, in exc_check\n    raise retry_exc.reraise()\n          ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 184, in reraise\n    raise self.last_attempt.result()\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 473, in __call__\n    result = fn(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1209, in _request_once\n    errors.APIError.raise_for_response(response)\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/errors.py\", line 134, in raise_for_response\n    cls.raise_error(response.status_code, response_json, response)\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/errors.py\", line 159, in raise_error\n    raise ClientError(status_code, response_json, response)\ngoogle.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "9767abc4a3307542eed2047acc4a7267",
+        "span_id": "9ac9b59677ad0239",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-04T11:36:59.234915Z",
+    "end_time": "2026-03-04T11:37:00.622573Z",
+    "status": {
+        "status_code": "ERROR",
+        "description": "ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:18",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [
+        {
+            "name": "exception",
+            "timestamp": "2026-03-04T11:37:00.622562Z",
+            "attributes": {
+                "exception.type": "google.genai.errors.ClientError",
+                "exception.message": "404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}",
+                "exception.stacktrace": "Traceback (most recent call last):\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/trace/__init__.py\", line 589, in use_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/opentelemetry/sdk/trace/__init__.py\", line 1105, in start_as_current_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 470, in start_as_monocle_span\n    yield span\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 115, in monocle_wrapper_span_processor\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, False, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/utils.py\", line 105, in wrapper\n    val = func(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 379, in task_wrapper\n    return monocle_wrapper(tracer, handler, to_wrap, wrapped, instance, source_path, args, kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 181, in monocle_wrapper\n    return_value, span_status = monocle_wrapper_span_processor(tracer, handler, to_wrap, wrapped, instance, source_path, add_workflow_span, args, kwargs)\n                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py\", line 146, in monocle_wrapper_span_processor\n    return_value = wrapped(*args, **kwargs)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/models.py\", line 5474, in generate_content\n    response = self._generate_content(\n               ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/models.py\", line 4214, in _generate_content\n    response = self._api_client.request(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1396, in request\n    response = self._request(http_request, http_options, stream=False)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1232, in _request\n    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 470, in __call__\n    do = self.iter(retry_state=retry_state)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 371, in iter\n    result = action(retry_state)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 413, in exc_check\n    raise retry_exc.reraise()\n          ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 184, in reraise\n    raise self.last_attempt.result()\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py\", line 449, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.11/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/tenacity/__init__.py\", line 473, in __call__\n    result = fn(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/_api_client.py\", line 1209, in _request_once\n    errors.APIError.raise_for_response(response)\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/errors.py\", line 134, in raise_for_response\n    cls.raise_error(response.status_code, response_json, response)\n  File \"/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/genai/errors.py\", line 159, in raise_error\n    raise ClientError(status_code, response_json, response)\ngoogle.genai.errors.ClientError: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}\n",
+                "exception.escaped": "False"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]
