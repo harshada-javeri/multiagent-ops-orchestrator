@@ -1,0 +1,126 @@
+{
+  "executions": [
+    {
+      "exec_id": "46683694",
+      "workflow_name": "QAOpsPipeline",
+      "status": "failed",
+      "visited": [
+        "diagnostics"
+      ],
+      "error": "'Message' object has no attribute 'to_dict'",
+      "duration_ms": 3.36,
+      "checkpoints": [],
+      "metadata": {}
+    },
+    {
+      "exec_id": "1bc137b7",
+      "workflow_name": "QAOpsPipeline",
+      "status": "failed",
+      "visited": [
+        "diagnostics"
+      ],
+      "error": "unhashable type: 'list'",
+      "duration_ms": 3.8,
+      "checkpoints": [
+        {
+          "node": "diagnostics",
+          "timestamp_utc": "2026-03-06T20:55:31.083459+00:00",
+          "content_keys": [
+            "failed_tests",
+            "error_categories",
+            "summary",
+            "raw_logs"
+          ]
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "exec_id": "de40df1d",
+      "workflow_name": "QAOpsPipeline",
+      "status": "failed",
+      "visited": [
+        "diagnostics"
+      ],
+      "error": "unhashable type: 'list'",
+      "duration_ms": 3.34,
+      "checkpoints": [
+        {
+          "node": "diagnostics",
+          "timestamp_utc": "2026-03-06T20:55:41.108628+00:00",
+          "content_keys": [
+            "failed_tests",
+            "error_categories",
+            "summary",
+            "raw_logs"
+          ]
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "exec_id": "74ef6352",
+      "workflow_name": "QAOpsPipeline",
+      "status": "completed",
+      "visited": [
+        "diagnostics",
+        "root_cause",
+        "planner",
+        "execution"
+      ],
+      "error": null,
+      "duration_ms": 4063.58,
+      "checkpoints": [
+        {
+          "node": "diagnostics",
+          "timestamp_utc": "2026-03-06T20:56:26.492487+00:00",
+          "content_keys": [
+            "failed_tests",
+            "error_categories",
+            "summary",
+            "raw_logs"
+          ]
+        },
+        {
+          "node": "root_cause",
+          "timestamp_utc": "2026-03-06T20:56:28.897876+00:00",
+          "content_keys": [
+            "analysis",
+            "root_causes",
+            "confidence",
+            "error_categories",
+            "memory_context"
+          ]
+        },
+        {
+          "node": "planner",
+          "timestamp_utc": "2026-03-06T20:56:30.555053+00:00",
+          "content_keys": [
+            "plan",
+            "ticket_url",
+            "ticket",
+            "priority",
+            "confidence",
+            "error_categories"
+          ]
+        },
+        {
+          "node": "execution",
+          "timestamp_utc": "2026-03-06T20:56:30.555453+00:00",
+          "content_keys": [
+            "plan",
+            "ticket_url",
+            "ticket",
+            "priority",
+            "confidence",
+            "error_categories",
+            "execution_results",
+            "auto_executed",
+            "metrics_snapshot"
+          ]
+        }
+      ],
+      "metadata": {}
+    }
+  ]
+}

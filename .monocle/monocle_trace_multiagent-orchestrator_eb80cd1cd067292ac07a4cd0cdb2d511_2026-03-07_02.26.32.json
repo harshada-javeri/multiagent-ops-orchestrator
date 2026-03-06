@@ -1,0 +1,99 @@
+[{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "eb80cd1cd067292ac07a4cd0cdb2d511",
+        "span_id": "9436a9d05c14b9cb",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "8771c38a7102b52c",
+    "start_time": "2026-03-06T20:56:26.516100Z",
+    "end_time": "2026-03-06T20:56:28.892276Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-06T20:56:26.516193Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"You are a senior QA engineer. Analyse the following CI/CD failure:\\n\\nFailed Tests: ['test_login', 'test_checkout']\\nError Categories: ['timeout', 'assertion']\\nHistorical Context: {}\\nLog snippet:\\n[INFO] Starting test suite...\\n[ERROR] test_login FAILED\\n  AssertionError: Expected 200, got 500\\n[ERROR] test_checkout FAILED\\n  TimeoutError: DB connection timeout after 30s\\n\\n\\nReturn: root_causes (list), brief analysis (str), confidence 0-1.\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-06T20:56:28.892150Z",
+            "attributes": {
+                "response": "{\"model\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Database Connection Issues\\\",\\n    \\\"Application Error (Internal Server Error)\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD pipeline failed due to two distinct issues. 'test_login' failed with an AssertionError indicating an unexpected HTTP status code (500 Internal Server Error) instead of the expected 200. This suggests a potential application bug or misconfiguration that's causing the server to return an error during login. Concurrently, 'test_checkout' timed out due to a DB connection timeout. This points to a problem with the database connectivity, possibly due to high load, network issues, or the database itself being unresponsive. The 500 error in login might be a symptom of the underlying database issues, or it could be a separate, coincident problem.\\\",\\n  \\\"confidence\\\": 0.9\\n}\\n```\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-06T20:56:28.892219Z",
+            "attributes": {
+                "completion_tokens": 190,
+                "prompt_tokens": 124,
+                "total_tokens": 314,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "eb80cd1cd067292ac07a4cd0cdb2d511",
+        "span_id": "8771c38a7102b52c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-06T20:56:26.516027Z",
+    "end_time": "2026-03-06T20:56:28.892321Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

@@ -1,25 +1,54 @@
-from adk import Agent, Message
-from utils.logger import get_logger
+"""
+TestDiagnosticsAgent — parses raw CI log strings and extracts
+failed test names, error categories, and a plain-text summary.
+"""
+import re
+from adk import Message
+from agents.base_agent import BaseAgent
 
-class TestDiagnosticsAgent(Agent):
-    __test__ = False
-    """
-    Agent that parses CI logs to identify failed tests.
-    """
-    def __init__(self, name: str):
-        super().__init__(name)
-        self.logger = get_logger(self.__class__.__name__)
 
-    def process(self, message: Message) -> Message:
-        """
-        Parse logs and extract failed tests.
-        """
-        logs = message.content
-        failed_tests = [line for line in logs.split("\n") if "FAIL" in line]
-        self.logger.info(f"Extracted failed tests: {failed_tests}")
+class TestDiagnosticsAgent(BaseAgent):
+    """Parses CI logs; extracts failed tests and error categories."""
+
+    def __init__(self, name: str = "TestDiagnosticsAgent"):
+        super().__init__(name=name, version="1.1.0")
+
+    def _run(self, message: Message) -> Message:
+        logs: str = (
+            message.content
+            if isinstance(message.content, str)
+            else str(message.content)
+        )
+
+        # Extract failed test names
+        failed_tests: list[str] = re.findall(r"(\w+)\s+FAILED", logs)
+
+        # Categorise error types
+        error_categories: list[str] = []
+        if re.search(r"[Tt]imeout", logs):
+            error_categories.append("timeout")
+        if re.search(r"[Aa]ssertion[Ee]rror", logs):
+            error_categories.append("assertion")
+        if re.search(r"[Rr]ace[_\s][Cc]ondition|flaky", logs, re.I):
+            error_categories.append("race_condition")
+        if re.search(r"[Cc]onnection[Ee]rror|[Cc]onnection refused", logs):
+            error_categories.append("connection_error")
+
+        summary = (
+            f"{len(failed_tests)} test(s) failed: {', '.join(failed_tests)}"
+            if failed_tests
+            else "No test failures detected"
+        )
+
+        self.logger.info(f"[{self.name}] {summary}")
+
         return Message(
             sender=self.name,
             receiver="RootCauseAnalyzerAgent",
-            content={"failed_tests": failed_tests}
+            content={
+                "failed_tests": failed_tests,
+                "error_categories": error_categories,
+                "summary": summary,
+                "raw_logs": logs,
+            },
         )
-# End of agents/test_diagnostics_agent.py
