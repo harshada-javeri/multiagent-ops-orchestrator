@@ -1,29 +1,26 @@
-
-from dotenv import load_dotenv
-load_dotenv()
 #!/usr/bin/env python3
 """
 Prediction script for QAOps Multi-Agent System
 Loads trained agents and runs inference
 """
 
+
 from dotenv import load_dotenv
-load_dotenv()  # Load environment variables from .env file
+load_dotenv()
 
-import os
-
-
-from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="multiagent-orchestrator")
+# Telemetry is initialized ONCE at the entry point.
+# Agent modules should only emit spans/traces.
+from observability import init_telemetry
+init_telemetry("multiagent-orchestrator")
 
 import json
 from pathlib import Path
+
 from adk import Message
 from agents.test_diagnostics_agent import TestDiagnosticsAgent
 from agents.root_cause_agent import RootCauseAnalyzerAgent
 from agents.action_planner_agent import ActionPlannerAgent
 from utils.logger import get_logger
-
 class QAOpsPredictor:
     def __init__(self, model_path="models"):
         self.logger = get_logger("QAOpsPredictor")

@@ -1,0 +1,163 @@
+[{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "23ff63c9b99ca6dad915ea394cad7fae",
+        "span_id": "c3e6bd59eebfe86c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "38070c909a3c70c8",
+    "start_time": "2026-03-05T04:12:53.731854Z",
+    "end_time": "2026-03-05T04:12:56.118031Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-05T04:12:53.731901Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-05T04:12:56.117822Z",
+            "attributes": {
+                "response": "{\"model\": \"The provided log entry `[ERROR] test FAILED` is extremely brief and doesn't contain any contextual information about what \\\"test\\\" failed or why. Therefore, it's impossible to determine the root cause from this single log line alone.\\n\\nTo summarize the root cause, we would need more information, such as:\\n\\n*   **The full log message:** Is there more detail surrounding this `[ERROR] test FAILED`?\\n*   **The context of the \\\"test\\\":** What kind of test was running (e.g., unit test, integration test, system test, performance test)?\\n*   **The application/system being tested:** What is this test designed to verify?\\n*   **Surrounding log entries:** What happened immediately before and after this error? Were there other warnings or errors?\\n*   **Configuration details:** Were there any recent changes to the environment or configuration?\\n*   **Specific error messages:** A typical test failure log would include a traceback, assertion error, or a specific error code that indicates the problem.\\n\\n**In essence, this log entry only tells us *that* a test failed, not *why*.**\\n\\n**If this were a real-world scenario, the \\\"root cause\\\" would be that the log is insufficient to diagnose the problem.**\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-05T04:12:56.117946Z",
+            "attributes": {
+                "completion_tokens": 269,
+                "prompt_tokens": 16,
+                "total_tokens": 285,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "23ff63c9b99ca6dad915ea394cad7fae",
+        "span_id": "38070c909a3c70c8",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "88756d1ae36c9c96",
+    "start_time": "2026-03-05T04:12:53.731537Z",
+    "end_time": "2026-03-05T04:12:56.118502Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-05T04:12:53.731609Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-05T04:12:56.118380Z",
+            "attributes": {
+                "response": "{\"model\": \"The provided log entry `[ERROR] test FAILED` is extremely brief and doesn't contain any contextual information about what \\\"test\\\" failed or why. Therefore, it's impossible to determine the root cause from this single log line alone.\\n\\nTo summarize the root cause, we would need more information, such as:\\n\\n*   **The full log message:** Is there more detail surrounding this `[ERROR] test FAILED`?\\n*   **The context of the \\\"test\\\":** What kind of test was running (e.g., unit test, integration test, system test, performance test)?\\n*   **The application/system being tested:** What is this test designed to verify?\\n*   **Surrounding log entries:** What happened immediately before and after this error? Were there other warnings or errors?\\n*   **Configuration details:** Were there any recent changes to the environment or configuration?\\n*   **Specific error messages:** A typical test failure log would include a traceback, assertion error, or a specific error code that indicates the problem.\\n\\n**In essence, this log entry only tells us *that* a test failed, not *why*.**\\n\\n**If this were a real-world scenario, the \\\"root cause\\\" would be that the log is insufficient to diagnose the problem.**\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-05T04:12:56.118461Z",
+            "attributes": {
+                "completion_tokens": 269,
+                "prompt_tokens": 16,
+                "total_tokens": 285,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "23ff63c9b99ca6dad915ea394cad7fae",
+        "span_id": "88756d1ae36c9c96",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-05T04:12:53.731473Z",
+    "end_time": "2026-03-05T04:12:56.118544Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

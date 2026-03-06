@@ -1,0 +1,163 @@
+[{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "7b927570f6c2191e2bc97c146a471a77",
+        "span_id": "4ddc2e094c62ffba",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "e179f13d339f0a1e",
+    "start_time": "2026-03-05T04:15:24.337113Z",
+    "end_time": "2026-03-05T04:15:25.862270Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-05T04:15:24.337161Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-05T04:15:25.862066Z",
+            "attributes": {
+                "response": "{\"model\": \"Based on the log provided, the only information is `[ERROR] test FAILED`.\\n\\nTherefore, the **root cause cannot be determined** from this single log entry.\\n\\nTo summarize root causes, we would need more information such as:\\n\\n*   **Specific error messages:** What did the error say? Was it a timeout, an assertion failure, a configuration issue, a dependency problem?\\n*   **Contextual logs:** What happened leading up to the error? What tests were being run? What environment was it executed in?\\n*   **Stack traces:** If it's a code-related failure, a stack trace would pinpoint the exact location of the problem.\\n\\nWith just `[ERROR] test FAILED`, all we know is that a test failed, but *why* it failed is completely unknown.\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-05T04:15:25.862161Z",
+            "attributes": {
+                "completion_tokens": 168,
+                "prompt_tokens": 16,
+                "total_tokens": 184,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "7b927570f6c2191e2bc97c146a471a77",
+        "span_id": "e179f13d339f0a1e",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "d0e9fe556c0327d7",
+    "start_time": "2026-03-05T04:15:24.336807Z",
+    "end_time": "2026-03-05T04:15:25.862738Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-05T04:15:24.336881Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-05T04:15:25.862640Z",
+            "attributes": {
+                "response": "{\"model\": \"Based on the log provided, the only information is `[ERROR] test FAILED`.\\n\\nTherefore, the **root cause cannot be determined** from this single log entry.\\n\\nTo summarize root causes, we would need more information such as:\\n\\n*   **Specific error messages:** What did the error say? Was it a timeout, an assertion failure, a configuration issue, a dependency problem?\\n*   **Contextual logs:** What happened leading up to the error? What tests were being run? What environment was it executed in?\\n*   **Stack traces:** If it's a code-related failure, a stack trace would pinpoint the exact location of the problem.\\n\\nWith just `[ERROR] test FAILED`, all we know is that a test failed, but *why* it failed is completely unknown.\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-05T04:15:25.862700Z",
+            "attributes": {
+                "completion_tokens": 168,
+                "prompt_tokens": 16,
+                "total_tokens": 184,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "7b927570f6c2191e2bc97c146a471a77",
+        "span_id": "d0e9fe556c0327d7",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-05T04:15:24.336732Z",
+    "end_time": "2026-03-05T04:15:25.862786Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

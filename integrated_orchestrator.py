@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 """
-Integrated QAOps Orchestrator with AWS AgentCore and Okahu
+Integrated QAOps Orchestrator
 """
-
-from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="qaops-multiagent-orchestrator")
-
 from predict import QAOpsPredictor
 from integrations import AgentCoreIntegration, tracer
 

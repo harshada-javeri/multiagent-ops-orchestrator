@@ -1,0 +1,163 @@
+[{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "13908e381e273201a1951fe7f45c6951",
+        "span_id": "4e4c50f35ef960ad",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "42129f42038eaa29",
+    "start_time": "2026-03-05T03:46:33.910895Z",
+    "end_time": "2026-03-05T03:46:39.429542Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/monocle_apptrace/instrumentation/common/wrapper.py:146",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-05T03:46:33.910996Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-05T03:46:39.428608Z",
+            "attributes": {
+                "response": "{\"model\": \"The provided log snippet is extremely brief and only indicates a single error: \\\"[ERROR] test FAILED\\\". Without more context, it's impossible to definitively determine the root causes. However, we can infer several *potential* root causes based on this information:\\n\\n**Possible Root Causes (ranked by likelihood given the limited information):**\\n\\n1.  **Specific Test Failure:** This is the most direct interpretation. A particular automated test (or a manual test that was logged this way) encountered an issue that caused it to fail.\\n    *   **Sub-Causes:**\\n        *   **Code Bug:** The actual application code being tested has a defect.\\n        *   **Test Code Bug:** The test itself is flawed and incorrectly identifies a passing condition as a failure, or it has a bug that causes it to crash.\\n        *   **Environmental Issue:** The test environment (e.g., database, network, dependencies) is not configured correctly or is experiencing problems.\\n        *   **Data Issue:** The test data used is invalid, missing, or in an unexpected format.\\n        *   **Timing/Race Condition:** The test is sensitive to timing and intermittently fails due to asynchronous operations.\\n\\n2.  **Test Execution Framework Issue:** The system or framework responsible for running the tests encountered a problem.\\n    *   **Sub-Causes:**\\n        *   **Configuration Error:** The test runner is not configured properly.\\n        *   **Resource Exhaustion:** The test runner ran out of memory, disk space, or other critical resources.\\n        *   **Permissions Problem:** The test runner lacks the necessary permissions to perform its operations.\\n\\n3.  **General System Instability:** The overall system where the tests are running is unstable, leading to unexpected behavior that manifests as a test failure.\\n    *   **Sub-Causes:**\\n        *   **High System Load:** The system is overloaded, causing processes to slow down or crash.\\n        *   **Underlying Infrastructure Problem:** Issues with the hardware, operating system, or cloud provider.\\n\\n**What's Missing and Why It's Important:**\\n\\nTo provide a true root cause analysis, you would need significantly more information. This includes:\\n\\n*   **Full Log Messages:** The \\\"[ERROR] test FAILED\\\" is likely a summary. The actual error message, stack trace, and surrounding log entries are crucial.\\n*   **Test Name/Identifier:** Which specific test failed? Knowing this points directly to the area of the application or system that has the problem.\\n*   **Timestamp:** When did this error occur? This helps correlate with other system events.\\n*   **Environment:** Where was the test run (e.g., development, staging, production)?\\n*   **Build/Version Information:** What version of the software was being tested?\\n*   **Test Runner/CI/CD Pipeline Information:** How was the test executed?\\n\\n**In summary, the root cause from the provided log is simply that a \\\"test failed\\\". The underlying reason could be anything from a simple code bug to a complex infrastructure issue, and more detailed logs are required for accurate diagnosis.**\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-05T03:46:39.428961Z",
+            "attributes": {
+                "completion_tokens": 650,
+                "prompt_tokens": 16,
+                "total_tokens": 666,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "13908e381e273201a1951fe7f45c6951",
+        "span_id": "42129f42038eaa29",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "e301783864ab58b1",
+    "start_time": "2026-03-05T03:46:33.910475Z",
+    "end_time": "2026-03-05T03:46:39.430265Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-05T03:46:33.910556Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"Summarize root causes from logs: ['[ERROR] test FAILED']\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-05T03:46:39.430216Z",
+            "attributes": {
+                "response": "{\"model\": \"The provided log snippet is extremely brief and only indicates a single error: \\\"[ERROR] test FAILED\\\". Without more context, it's impossible to definitively determine the root causes. However, we can infer several *potential* root causes based on this information:\\n\\n**Possible Root Causes (ranked by likelihood given the limited information):**\\n\\n1.  **Specific Test Failure:** This is the most direct interpretation. A particular automated test (or a manual test that was logged this way) encountered an issue that caused it to fail.\\n    *   **Sub-Causes:**\\n        *   **Code Bug:** The actual application code being tested has a defect.\\n        *   **Test Code Bug:** The test itself is flawed and incorrectly identifies a passing condition as a failure, or it has a bug that causes it to crash.\\n        *   **Environmental Issue:** The test environment (e.g., database, network, dependencies) is not configured correctly or is experiencing problems.\\n        *   **Data Issue:** The test data used is invalid, missing, or in an unexpected format.\\n        *   **Timing/Race Condition:** The test is sensitive to timing and intermittently fails due to asynchronous operations.\\n\\n2.  **Test Execution Framework Issue:** The system or framework responsible for running the tests encountered a problem.\\n    *   **Sub-Causes:**\\n        *   **Configuration Error:** The test runner is not configured properly.\\n        *   **Resource Exhaustion:** The test runner ran out of memory, disk space, or other critical resources.\\n        *   **Permissions Problem:** The test runner lacks the necessary permissions to perform its operations.\\n\\n3.  **General System Instability:** The overall system where the tests are running is unstable, leading to unexpected behavior that manifests as a test failure.\\n    *   **Sub-Causes:**\\n        *   **High System Load:** The system is overloaded, causing processes to slow down or crash.\\n        *   **Underlying Infrastructure Problem:** Issues with the hardware, operating system, or cloud provider.\\n\\n**What's Missing and Why It's Important:**\\n\\nTo provide a true root cause analysis, you would need significantly more information. This includes:\\n\\n*   **Full Log Messages:** The \\\"[ERROR] test FAILED\\\" is likely a summary. The actual error message, stack trace, and surrounding log entries are crucial.\\n*   **Test Name/Identifier:** Which specific test failed? Knowing this points directly to the area of the application or system that has the problem.\\n*   **Timestamp:** When did this error occur? This helps correlate with other system events.\\n*   **Environment:** Where was the test run (e.g., development, staging, production)?\\n*   **Build/Version Information:** What version of the software was being tested?\\n*   **Test Runner/CI/CD Pipeline Information:** How was the test executed?\\n\\n**In summary, the root cause from the provided log is simply that a \\\"test failed\\\". The underlying reason could be anything from a simple code bug to a complex infrastructure issue, and more detailed logs are required for accurate diagnosis.**\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-05T03:46:39.430235Z",
+            "attributes": {
+                "completion_tokens": 650,
+                "prompt_tokens": 16,
+                "total_tokens": 666,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "13908e381e273201a1951fe7f45c6951",
+        "span_id": "e301783864ab58b1",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-05T03:46:33.910398Z",
+    "end_time": "2026-03-05T03:46:39.430285Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.4",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

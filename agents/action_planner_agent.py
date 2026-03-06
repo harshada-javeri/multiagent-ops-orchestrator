@@ -1,13 +1,8 @@
 # agents/action_planner_agent.py
 from adk import Agent, Message
 from tools.jira_tool import create_jira_ticket
-
 from typing import Any
-
 from utils.logger import get_logger
-
-from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="multiagent-orchestrator")
 class ActionPlannerAgent(Agent):
     """
     Agent that proposes fixes or creates JIRA tickets based on root cause analysis.

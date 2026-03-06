@@ -2,15 +2,10 @@
 from adk import Agent, Message
 from typing import Dict
 from utils.logger import get_logger
-import os
-from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="multiagent-orchestrator")
 from utils.llm_factory import run_llm
+import os
 from opentelemetry import trace
 tracer = trace.get_tracer("RootCauseAnalyzerAgent")
-
-
-
 class RootCauseAnalyzerAgent(Agent):
     """
     Agent that uses LiteLLM to summarize root causes of test failures.

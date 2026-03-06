@@ -1,6 +1,4 @@
 import sys
-import os
-import pytest
 from tools.jenkins_tool import JenkinsTool
 from tools.jira_tool import JiraTool
 from tools.grafana_tool import GrafanaTool

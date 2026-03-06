@@ -7,11 +7,13 @@ Provides REST API endpoints for CI/CD failure analysis
 from dotenv import load_dotenv
 load_dotenv()
 
-from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name="serve")
+# Telemetry is initialized ONCE at the entry point.
+# Agent modules should only emit spans/traces.
+import os
+from observability import init_telemetry
+init_telemetry("multiagent-orchestrator")
 
 from flask import Flask, request, jsonify
-import os
 from predict import QAOpsPredictor
 from utils.logger import get_logger
 
