@@ -87,3 +87,20 @@ def update_memory(issue: str) -> None:
             json.dump(memory, f, indent=4)
     except Exception as e:
         raise MemoryHandlerError(f"Failed to update memory: {e}")
+
+def query_memory(key: str):
+    """
+    Simple memory lookup for stored events or failures.
+    """
+    import json
+    from pathlib import Path
+
+    memory_file = Path("memory_bank.json")
+
+    if not memory_file.exists():
+        return None
+
+    with open(memory_file, "r") as f:
+        data = json.load(f)
+
+    return data.get(key)

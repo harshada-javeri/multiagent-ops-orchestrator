@@ -1,0 +1,417 @@
+[{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "77c21450c2cae11941bdbfad82e5b5ae",
+        "span_id": "0baf54b96a5abe51",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "19739c44ac27aa04",
+    "start_time": "2026-03-13T02:51:27.895146Z",
+    "end_time": "2026-03-13T02:51:27.896691Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "TestDiagnosticsAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "19739c44ac27aa04",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "7a2f40e4-c50c-4b2c-b442-48ec38778e67",
+        "scope.agentic.turn": "99195078a512bb56b8ad6e346f7c9f30",
+        "scope.agentic.invocation": "1603ea70ce4d74c1dfc3ca44177823e",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:51:27.895335Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[INFO] Starting test suite...\\n[ERROR] test_login FAILED\\n  AssertionError: Expected 200, got 500\\n[ERROR] test_checkout FAILED\\n  TimeoutError: DB connection timeout after 30s\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:51:27.896654Z",
+            "attributes": {
+                "response": "{\"failed_tests\": [\"test_login\", \"test_checkout\"], \"error_categories\": [\"timeout\", \"assertion\"], \"summary\": \"2 test(s) failed: test_login, test_checkout\", \"raw_logs\": \"{'logs': '[INFO] Starting test suite...\\\\n[ERROR] test_login FAILED\\\\n  AssertionError: Expected 200, got 500\\\\n[ERROR] test_checkout FAILED\\\\n  TimeoutError: DB connection timeout after 30s\\\\n'}\"}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "77c21450c2cae11941bdbfad82e5b5ae",
+        "span_id": "d6c13e90298de2a2",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "59108cf8861d55a4",
+    "start_time": "2026-03-13T02:51:27.932662Z",
+    "end_time": "2026-03-13T02:51:30.687223Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "scope.agentic.session": "7a2f40e4-c50c-4b2c-b442-48ec38778e67",
+        "scope.agentic.turn": "99195078a512bb56b8ad6e346f7c9f30",
+        "scope.agentic.invocation": "eec9e83c37c4baa468317fd0284b5586",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:51:27.932809Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"You are a senior QA engineer. Analyse the following CI/CD failure:\\n\\nFailed Tests: ['test_login', 'test_checkout']\\nError Categories: ['timeout', 'assertion']\\nHistorical Context: {}\\nLog snippet:\\n{'logs': '[INFO] Starting test suite...\\\\n[ERROR] test_login FAILED\\\\n  AssertionError: Expected 200, got 500\\\\n[ERROR] test_checkout FAILED\\\\n  TimeoutError: DB connection timeout after 30s\\\\n'}\\n\\nReturn: root_causes (list), brief analysis (str), confidence 0-1.\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:51:30.686998Z",
+            "attributes": {
+                "response": "{\"model\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Database connection issues\\\",\\n    \\\"Potential backend service instability\\\",\\n    \\\"Increased load or resource contention on the database server\\\",\\n    \\\"Inefficient database query or connection pooling\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD pipeline failed due to two distinct test failures: 'test_login' and 'test_checkout'. The 'test_login' failure resulted in an `AssertionError`, indicating that the expected HTTP status code (200) was not received, and instead, a 500 Internal Server Error was returned. This strongly suggests a problem within the backend application logic or an unhandled exception during the login process. The 'test_checkout' failure manifested as a `TimeoutError`, specifically a 'DB connection timeout after 30s'. This points to a critical issue with database connectivity or performance. The database server is either unresponsive, overloaded, or the application is unable to establish a connection within the allocated 30-second timeout. The historical context is empty, so we cannot directly correlate this to previous incidents. However, the presence of both an application-level error (login 500) and a critical infrastructure error (DB timeout) suggests potential underlying issues impacting the application's stability and its ability to interact with its dependencies. It's highly probable that the database issue is contributing to or directly causing the login failure as well, as many login processes rely on database lookups.\\\",\\n  \\\"confidence\\\": 0.95\\n}\\n```\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-13T02:51:30.687102Z",
+            "attributes": {
+                "completion_tokens": 323,
+                "prompt_tokens": 133,
+                "total_tokens": 456,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "77c21450c2cae11941bdbfad82e5b5ae",
+        "span_id": "59108cf8861d55a4",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "19739c44ac27aa04",
+    "start_time": "2026-03-13T02:51:27.897106Z",
+    "end_time": "2026-03-13T02:51:30.689013Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "RootCauseAnalyzerAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "19739c44ac27aa04",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "7a2f40e4-c50c-4b2c-b442-48ec38778e67",
+        "scope.agentic.turn": "99195078a512bb56b8ad6e346f7c9f30",
+        "scope.agentic.invocation": "eec9e83c37c4baa468317fd0284b5586",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:51:27.897214Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[INFO] Starting test suite...\\n[ERROR] test_login FAILED\\n  AssertionError: Expected 200, got 500\\n[ERROR] test_checkout FAILED\\n  TimeoutError: DB connection timeout after 30s\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:51:30.688982Z",
+            "attributes": {
+                "response": "{\"analysis\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Database connection issues\\\",\\n    \\\"Potential backend service instability\\\",\\n    \\\"Increased load or resource contention on the database server\\\",\\n    \\\"Inefficient database query or connection pooling\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD pipeline failed due to two distinct test failures: 'test_login' and 'test_checkout'. The 'test_login' failure resulted in an `AssertionError`, indicating that the expected HTTP status code (200) was not received, and instead, a 500 Internal Server Error was returned. This strongly suggests a problem within the backend application logic or an unhandled exception during the login process. The 'test_checkout' failure manifested as a `TimeoutError`, specifically a 'DB connection timeout after 30s'. This points to a critical issue with database connectivity or performance. The database server is either unresponsive, overloaded, or the application is unable to establish a connection within the allocated 30-second timeout. The historical context is empty, so we cannot directly correlate this to previous incidents. However, the presence of both an application-level error (login 500) and a critical infrastructure error (DB timeout) suggests potential underlying issues impacting the application's stability and its ability to interact with its dependencies. It's highly probable that the database issue is contributing to or directly causing the login failure as well, as many login processes rely on database lookups.\\\",\\n  \\\"confidence\\\": 0.95\\n}\\n```\", \"root_causes\": [\"test_login\", \"test_checkout\"], \"confidence\": 0.85, \"error_categories\": [\"timeout\", \"assertion\"], \"memory_context\": {}}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "77c21450c2cae11941bdbfad82e5b5ae",
+        "span_id": "5a9d600053342c48",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "19739c44ac27aa04",
+    "start_time": "2026-03-13T02:51:30.690046Z",
+    "end_time": "2026-03-13T02:51:31.970027Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "ActionPlannerAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "19739c44ac27aa04",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "7a2f40e4-c50c-4b2c-b442-48ec38778e67",
+        "scope.agentic.turn": "99195078a512bb56b8ad6e346f7c9f30",
+        "scope.agentic.invocation": "a1d2a3a7d073acc6bd71950e642d7f10",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:51:30.690226Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[INFO] Starting test suite...\\n[ERROR] test_login FAILED\\n  AssertionError: Expected 200, got 500\\n[ERROR] test_checkout FAILED\\n  TimeoutError: DB connection timeout after 30s\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:51:31.970010Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'test_login'\", \"Action 2: Investigate and fix 'test_checkout'\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"timeout\", \"assertion\"]}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "77c21450c2cae11941bdbfad82e5b5ae",
+        "span_id": "941ddf775296da0a",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "19739c44ac27aa04",
+    "start_time": "2026-03-13T02:51:31.970374Z",
+    "end_time": "2026-03-13T02:51:31.970700Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "ExecutionAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "19739c44ac27aa04",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "7a2f40e4-c50c-4b2c-b442-48ec38778e67",
+        "scope.agentic.turn": "99195078a512bb56b8ad6e346f7c9f30",
+        "scope.agentic.invocation": "c9bd3727f2bacb9158bf453134f5d876",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:51:31.970447Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[INFO] Starting test suite...\\n[ERROR] test_login FAILED\\n  AssertionError: Expected 200, got 500\\n[ERROR] test_checkout FAILED\\n  TimeoutError: DB connection timeout after 30s\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:51:31.970688Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'test_login'\", \"Action 2: Investigate and fix 'test_checkout'\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"timeout\", \"assertion\"], \"execution_results\": [{\"action\": \"Action 1: Investigate and fix 'test_login'\", \"status\": \"pending_approval\"}, {\"action\": \"Action 2: Investigate and fix 'test_checkout'\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"none\"}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "77c21450c2cae11941bdbfad82e5b5ae",
+        "span_id": "19739c44ac27aa04",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "ece1e13379915bfe",
+    "start_time": "2026-03-13T02:51:27.892737Z",
+    "end_time": "2026-03-13T02:51:31.970778Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/runners.py:538",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "qaops_pipeline",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "7a2f40e4-c50c-4b2c-b442-48ec38778e67",
+        "scope.agentic.turn": "99195078a512bb56b8ad6e346f7c9f30",
+        "scope.agentic.invocation": "d19a529822bcaf430691b67972c1f050",
+        "entity.count": 1,
+        "span.subtype": "routing"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.runners.Runner.run_async",
+    "context": {
+        "trace_id": "77c21450c2cae11941bdbfad82e5b5ae",
+        "span_id": "ece1e13379915bfe",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "120dee5a9d843c31",
+    "start_time": "2026-03-13T02:51:27.889780Z",
+    "end_time": "2026-03-13T02:51:31.970982Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/main_orchestrator.py:87",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "span.type": "agentic.turn",
+        "scope.agentic.session": "7a2f40e4-c50c-4b2c-b442-48ec38778e67",
+        "scope.agentic.turn": "99195078a512bb56b8ad6e346f7c9f30",
+        "entity.count": 1,
+        "span.subtype": "turn"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:51:27.889950Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[INFO] Starting test suite...\\n[ERROR] test_login FAILED\\n  AssertionError: Expected 200, got 500\\n[ERROR] test_checkout FAILED\\n  TimeoutError: DB connection timeout after 30s\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:51:31.970969Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'test_login'\", \"Action 2: Investigate and fix 'test_checkout'\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"timeout\", \"assertion\"], \"execution_results\": [{\"action\": \"Action 1: Investigate and fix 'test_login'\", \"status\": \"pending_approval\"}, {\"action\": \"Action 2: Investigate and fix 'test_checkout'\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"none\"}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "77c21450c2cae11941bdbfad82e5b5ae",
+        "span_id": "120dee5a9d843c31",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-13T02:51:27.889561Z",
+    "end_time": "2026-03-13T02:51:31.970995Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/main_orchestrator.py:87",
+        "scope.agentic.session": "7a2f40e4-c50c-4b2c-b442-48ec38778e67",
+        "scope.agentic.turn": "99195078a512bb56b8ad6e346f7c9f30",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

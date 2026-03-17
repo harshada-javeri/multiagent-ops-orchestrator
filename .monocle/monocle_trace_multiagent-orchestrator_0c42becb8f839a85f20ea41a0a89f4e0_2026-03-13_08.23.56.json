@@ -1,0 +1,417 @@
+[{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "0c42becb8f839a85f20ea41a0a89f4e0",
+        "span_id": "c9fb8ef1bd47ff55",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "36228c6bd6ef4733",
+    "start_time": "2026-03-13T02:53:55.270775Z",
+    "end_time": "2026-03-13T02:53:55.271609Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "TestDiagnosticsAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "36228c6bd6ef4733",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "187d7506-5c17-4623-ad7b-9eda283c850e",
+        "scope.agentic.turn": "6eba780ac0ffe1a0f7a8787e73a369c9",
+        "scope.agentic.invocation": "5d96e79a7bab93eb2a59a095a2ae7d14",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:53:55.270841Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:53:55.271590Z",
+            "attributes": {
+                "response": "{\"failed_tests\": [], \"error_categories\": [\"assertion\", \"connection_error\"], \"summary\": \"No test failures detected\", \"raw_logs\": \"{'logs': \\\"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\\\n[2025-11-28 10:32:15] INFO: Running tests...\\\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\\\njava.lang.AssertionError: expected [true] but found [false]\\\\n\\\\tat org.testng.Assert.fail(Assert.java:96)\\\\n\\\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\\\n\\\\tat org.testng.Assert.assertTrue(Assert.java:44)\\\\n\\\\tat org.testng.Assert.assertTrue(Assert.java:54)\\\\n\\\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\\\njava.net.ConnectException: Connection refused: connect\\\\n\\\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\\\n\\\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\\\n\\\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\\\n\\\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\\\n\\\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\\\n\\\\tat java.net.Socket.connect(Socket.java:589)\\\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\\\n\\\"}\"}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.genai.models.Models.generate_content",
+    "context": {
+        "trace_id": "0c42becb8f839a85f20ea41a0a89f4e0",
+        "span_id": "39fe86b48b61eae5",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "9e7a8e71e4f54d64",
+    "start_time": "2026-03-13T02:53:55.290927Z",
+    "end_time": "2026-03-13T02:53:57.594578Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/utils/llm_factory.py:20",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "inference.gemini",
+        "entity.1.inference_endpoint": "https://generativelanguage.googleapis.com/",
+        "entity.1.provider_name": "gcp",
+        "entity.2.name": "gemini-2.5-flash-lite",
+        "entity.2.type": "model.llm.gemini-2.5-flash-lite",
+        "span.type": "inference",
+        "scope.agentic.session": "187d7506-5c17-4623-ad7b-9eda283c850e",
+        "scope.agentic.turn": "6eba780ac0ffe1a0f7a8787e73a369c9",
+        "scope.agentic.invocation": "ef73389e64946229c976cd68fb515edb",
+        "entity.count": 2
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:53:55.291018Z",
+            "attributes": {
+                "input": [
+                    "{\"user\": \"You are a senior QA engineer. Analyse the following CI/CD failure:\\n\\nFailed Tests: []\\nError Categories: ['assertion', 'connection_error']\\nHistorical Context: {}\\nLog snippet:\\n{'logs': \\\"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\\\n[2025-11-28 10:32:15] INFO: Running tests...\\\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\\\njava.lang.AssertionError: expected [true] but found [false]\\\\n\\\\tat org.testng.Assert.fail(Assert.java:96)\\\\n\\\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\\\n\\\\tat org.testng.Assert.assertTrue(Assert.java:44)\\\\n\\\\tat org.testng.Assert.assertTrue(Assert.java:54)\\\\n\\\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\\\njava.net.ConnectException: Connection refused: connect\\\\n\\\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\\\n\\\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\\\n\\\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\\\n\\\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\\\n\\\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\\\n\\\\tat java.net.Socket.connect(Socket.java:589)\\\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\\\n\\\"}\\n\\nReturn: root_causes (list), brief analysis (str), confidence 0-1.\"}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:53:57.594382Z",
+            "attributes": {
+                "response": "{\"model\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Test failure in com.example.tests.TestLogin.testUserAuthentication due to an AssertionError (expected true but found false).\\\",\\n    \\\"Test failure in com.example.tests.TestAPI.testCreateUser due to a Connection refused: connect error (java.net.ConnectException).\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD build failed due to two distinct test failures. The first, `com.example.tests.TestLogin.testUserAuthentication`, indicates a logical error in the application's authentication flow, where an expected `true` result for authentication was actually `false`. The second, `com.example.tests.TestAPI.testCreateUser`, points to a connectivity issue. The 'Connection refused' error suggests that the test environment was unable to establish a connection to the target service (likely the API being tested) at the expected address and port. This could be due to the service not running, incorrect network configuration, or firewall issues within the CI/CD environment. Given the separate nature of these errors (one assertion, one connection), they likely stem from different underlying problems, though a misconfiguration in the test environment could potentially affect both.\\\",\\n  \\\"confidence\\\": 0.9\\n}\\n```\"}"
+            }
+        },
+        {
+            "name": "metadata",
+            "timestamp": "2026-03-13T02:53:57.594499Z",
+            "attributes": {
+                "completion_tokens": 273,
+                "prompt_tokens": 572,
+                "total_tokens": 845,
+                "finish_reason": "STOP",
+                "finish_type": "success"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "0c42becb8f839a85f20ea41a0a89f4e0",
+        "span_id": "9e7a8e71e4f54d64",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "36228c6bd6ef4733",
+    "start_time": "2026-03-13T02:53:55.271797Z",
+    "end_time": "2026-03-13T02:53:57.595657Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "RootCauseAnalyzerAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "36228c6bd6ef4733",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "187d7506-5c17-4623-ad7b-9eda283c850e",
+        "scope.agentic.turn": "6eba780ac0ffe1a0f7a8787e73a369c9",
+        "scope.agentic.invocation": "ef73389e64946229c976cd68fb515edb",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:53:55.271846Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:53:57.595626Z",
+            "attributes": {
+                "response": "{\"analysis\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Test failure in com.example.tests.TestLogin.testUserAuthentication due to an AssertionError (expected true but found false).\\\",\\n    \\\"Test failure in com.example.tests.TestAPI.testCreateUser due to a Connection refused: connect error (java.net.ConnectException).\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD build failed due to two distinct test failures. The first, `com.example.tests.TestLogin.testUserAuthentication`, indicates a logical error in the application's authentication flow, where an expected `true` result for authentication was actually `false`. The second, `com.example.tests.TestAPI.testCreateUser`, points to a connectivity issue. The 'Connection refused' error suggests that the test environment was unable to establish a connection to the target service (likely the API being tested) at the expected address and port. This could be due to the service not running, incorrect network configuration, or firewall issues within the CI/CD environment. Given the separate nature of these errors (one assertion, one connection), they likely stem from different underlying problems, though a misconfiguration in the test environment could potentially affect both.\\\",\\n  \\\"confidence\\\": 0.9\\n}\\n```\", \"root_causes\": [], \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"memory_context\": {}}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "0c42becb8f839a85f20ea41a0a89f4e0",
+        "span_id": "7813642fc97359af",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "36228c6bd6ef4733",
+    "start_time": "2026-03-13T02:53:57.596403Z",
+    "end_time": "2026-03-13T02:53:58.831682Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "ActionPlannerAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "36228c6bd6ef4733",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "187d7506-5c17-4623-ad7b-9eda283c850e",
+        "scope.agentic.turn": "6eba780ac0ffe1a0f7a8787e73a369c9",
+        "scope.agentic.invocation": "c6d90f3308cf049fa3518e15aa190e91",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:53:57.596567Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:53:58.831667Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Review CI logs and rerun the failing tests\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"]}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "0c42becb8f839a85f20ea41a0a89f4e0",
+        "span_id": "530a604637f4bc8c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "36228c6bd6ef4733",
+    "start_time": "2026-03-13T02:53:58.832034Z",
+    "end_time": "2026-03-13T02:53:58.832378Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "ExecutionAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "36228c6bd6ef4733",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "187d7506-5c17-4623-ad7b-9eda283c850e",
+        "scope.agentic.turn": "6eba780ac0ffe1a0f7a8787e73a369c9",
+        "scope.agentic.invocation": "e3933b50b602b116438ed3ac425b201c",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:53:58.832103Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:53:58.832367Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Review CI logs and rerun the failing tests\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"execution_results\": [{\"action\": \"Action 1: Review CI logs and rerun the failing tests\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"none\"}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "0c42becb8f839a85f20ea41a0a89f4e0",
+        "span_id": "36228c6bd6ef4733",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "ef71849e6204e03e",
+    "start_time": "2026-03-13T02:53:55.269898Z",
+    "end_time": "2026-03-13T02:53:58.832435Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/runners.py:538",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "qaops_pipeline",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "187d7506-5c17-4623-ad7b-9eda283c850e",
+        "scope.agentic.turn": "6eba780ac0ffe1a0f7a8787e73a369c9",
+        "scope.agentic.invocation": "d0e144cf7d0e3b280482755348e96b4a",
+        "entity.count": 1,
+        "span.subtype": "routing"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.runners.Runner.run_async",
+    "context": {
+        "trace_id": "0c42becb8f839a85f20ea41a0a89f4e0",
+        "span_id": "ef71849e6204e03e",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "e52d9f8e80689347",
+    "start_time": "2026-03-13T02:53:55.267816Z",
+    "end_time": "2026-03-13T02:53:58.832505Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/main_orchestrator.py:87",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "span.type": "agentic.turn",
+        "scope.agentic.session": "187d7506-5c17-4623-ad7b-9eda283c850e",
+        "scope.agentic.turn": "6eba780ac0ffe1a0f7a8787e73a369c9",
+        "entity.count": 1,
+        "span.subtype": "turn"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-13T02:53:55.267868Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-13T02:53:58.832497Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Review CI logs and rerun the failing tests\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"execution_results\": [{\"action\": \"Action 1: Review CI logs and rerun the failing tests\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"none\"}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "0c42becb8f839a85f20ea41a0a89f4e0",
+        "span_id": "e52d9f8e80689347",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-13T02:53:55.267742Z",
+    "end_time": "2026-03-13T02:53:58.832514Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/main_orchestrator.py:87",
+        "scope.agentic.session": "187d7506-5c17-4623-ad7b-9eda283c850e",
+        "scope.agentic.turn": "6eba780ac0ffe1a0f7a8787e73a369c9",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

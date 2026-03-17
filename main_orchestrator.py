@@ -1,85 +1,139 @@
-from adk import AgentOrchestrator, Message
-from agents import TestDiagnosticsAgent, RootCauseAnalyzerAgent, ActionPlannerAgent
-from utils.logger import setup_logger
-from utils.telemetry import init_telemetry
+"""
+Main orchestration entry point.
+
+Uses Google ADK SequentialAgent + Runner instead of the custom
+EventIngestionLayer/EventRouter, while keeping the public API:
+    run_qaops_pipeline(ci_logs) → dict
+"""
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# ── Telemetry MUST be initialised before any agent/tool imports ──
+from observability import init_telemetry
+
+init_telemetry("multiagent-orchestrator")
+
+import asyncio
+import json
+
+from google.adk.agents import SequentialAgent
+from google.adk.runners import Runner
+from google.adk.sessions import InMemorySessionService
+from google.genai import types
+
+from agents.action_planner_agent import ActionPlannerAgent
+from agents.execution_agent import ExecutionAgent
+from agents.root_cause_agent import RootCauseAnalyzerAgent
+from agents.test_diagnostics_agent import TestDiagnosticsAgent
+from adk import Message
+from tools.tool_registry import ToolRegistry
+from utils.logger import get_logger
 from utils.memory_handler import update_memory
-from flask import Flask
 
-logger = setup_logger(__name__)
-tracer, meter = init_telemetry()
-app = Flask(__name__)
+logger = get_logger("MainOrchestrator")
 
-def run_qaops_pipeline(ci_logs: str):
+# ── Bootstrap tools once at startup ──────────────────────────────
+ToolRegistry.bootstrap()
+
+# ── Build Google ADK sequential pipeline ─────────────────────────
+_pipeline = SequentialAgent(
+    name="qaops_pipeline",
+    sub_agents=[
+        TestDiagnosticsAgent(),
+        RootCauseAnalyzerAgent(),
+        ActionPlannerAgent(),
+        ExecutionAgent(dry_run=True),
+    ],
+)
+
+# ── Runner manages sessions + execution lifecycle ─────────────────
+_session_service = InMemorySessionService()
+_runner = Runner(
+    agent=_pipeline,
+    app_name="multiagent-orchestrator",
+    session_service=_session_service,
+)
+
+
+# ---------------------------------------------------------------------------
+# Public API
+# ---------------------------------------------------------------------------
+
+def run_qaops_pipeline(ci_logs: str) -> dict:
     """
-    Run the QAOps triage pipeline over CI log output.
+    Run the QAOps triage pipeline over raw CI log output.
 
-    This function orchestrates a multi-agent workflow that:
-    - Starts an OpenTelemetry tracing span named "qaops_pipeline".
-    - Logs pipeline start and completion.
-    - Initializes and runs the AgentOrchestrator with:
-        - TestDiagnosticsAgent ("Diagnostics") for failed test detection and log parsing.
-        - RootCauseAnalyzerAgent ("RootCause") for root cause analysis of detected issues.
-        - ActionPlannerAgent ("ActionPlanner") for remediation planning and recommended actions.
-    - Sends an initial system message containing the provided CI logs to kick off the pipeline.
-    - Persists recurring failure signals by calling `update_memory` for each identified failed test.
-
-    Parameters:
-    - ci_logs (str): Raw CI pipeline logs (e.g., build, test, runner output) used as input for diagnostics.
+    Args:
+        ci_logs: Raw CI/CD console output (string).
 
     Returns:
-    - result (Message): The final message produced by the orchestrator, typically containing structured
-        diagnostics (e.g., failed_tests, root_causes, suggested_actions) in `result.content`.
-
-    Raises:
-    - Exception: Propagates any error that occurs during orchestration after logging it.
-
-    Side Effects:
-    - Emits logs via the module-level `logger`.
-    - Creates an OpenTelemetry span for distributed tracing.
-    - Calls `update_memory(test)` for each detected recurring failed test to update long-term memory.
-
-    Notes:
-    - Expects the orchestrator and agents to adhere to a message-passing interface where `content`
-        is a serializable structure (e.g., dict) containing pipeline outputs.
-    - The presence of the "failed_tests" key in `result.content` triggers memory updates for those tests.
+        dict with keys: failed_tests, analysis, plan, ticket_url, priority,
+                        confidence, execution_results, …
     """
-    try:
-        with tracer.start_as_current_span("qaops_pipeline"):
-            logger.info("Starting QA triage pipeline")
-            # Initialize agents
-            orchestrator = AgentOrchestrator(agents=[
-                TestDiagnosticsAgent(name="Diagnostics"),
-                RootCauseAnalyzerAgent(name="RootCause"),
-                ActionPlannerAgent(name="ActionPlanner"),
-            ])
-            # Start orchestration
-            initial_message = Message(
-                sender="System",
-                receiver="Diagnostics",
-                content=ci_logs
-            )
-            result = orchestrator.start(initial_message)
-            # Update memory for recurring issues
-            if "failed_tests" in result.content:
-                for test in result.content["failed_tests"]:
-                    update_memory(test)
-            logger.info(f"Pipeline completed: {result.content}")
-            return result
-    except Exception as e:
-        logger.error(f"Pipeline error: {e}")
-        raise
+    async def _run() -> dict:
+        session = await _session_service.create_session(
+            app_name="multiagent-orchestrator",
+            user_id="system",
+        )
+
+        initial_content = Message(
+            sender="ingress",
+            receiver="TestDiagnosticsAgent",
+            content={"logs": ci_logs},
+        ).to_adk_content()
+
+        last_event = None
+        async for event in _runner.run_async(
+            user_id="system",
+            session_id=session.id,
+            new_message=initial_content,
+        ):
+            # Capture the last agent event (not SequentialAgent state events)
+            if event.author and event.author != "qaops_pipeline" and event.content:
+                last_event = event
+
+        # Extract result from last agent's event content
+        result: dict = {}
+        if last_event and last_event.content and last_event.content.parts:
+            try:
+                result = json.loads(last_event.content.parts[0].text)
+            except (json.JSONDecodeError, TypeError):
+                result = {"text": str(last_event.content.parts[0].text)}
+
+        # Persist recurring failures to long-term memory
+        for test in result.get("failed_tests", []):
+            update_memory(test)
+
+        logger.info(f"[MainOrchestrator] Pipeline complete: {list(result.keys())}")
+        return result
+
+    return asyncio.run(_run())
+
+
+# ---------------------------------------------------------------------------
+# Standalone execution
+# ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    from tools.jenkins_tool import fetch_ci_logs
-    logs = fetch_ci_logs()
-    run_qaops_pipeline(logs)
+    import os
 
-@app.route("/health")
-def health():
-    return {"status": "ok"}, 200
+    jenkins_url = os.getenv("JENKINS_URL", "")
+    sample_path = os.path.join("data", "sample_logs", "jenkins_failure.log")
 
-if __name__ == "__main__":
-    from tools.jenkins_tool import fetch_ci_logs
-    logs = fetch_ci_logs()
-    run_qaops_pipeline(logs)
-    app.run(host="0.0.0.0", port=8080)
+    # Use live Jenkins only when a real URL is configured (not a placeholder)
+    if jenkins_url and "your-company" not in jenkins_url and "placeholder" not in jenkins_url:
+        jenkins = ToolRegistry.get("jenkins")
+        logs = jenkins.fetch_ci_logs() if jenkins else None
+        logger.info("[MainOrchestrator] Using Jenkins live logs")
+    elif os.path.exists(sample_path):
+        with open(sample_path) as f:
+            logs = f.read()
+        logger.info(f"[MainOrchestrator] Using sample log: {sample_path}")
+    else:
+        logs = "[ERROR] test_login FAILED\ntest_checkout FAILED\nAssertionError: expected 200 got 500"
+        logger.warning("[MainOrchestrator] Using hardcoded fallback logs")
+
+    result = run_qaops_pipeline(logs)
+    logger.info(f"Pipeline complete: {result}")
+    print(result)
