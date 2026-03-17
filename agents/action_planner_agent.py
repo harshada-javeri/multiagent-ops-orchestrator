@@ -8,8 +8,8 @@ from agents.base_agent import BaseAgent
 class ActionPlannerAgent(BaseAgent):
     """Generates remediation steps and creates a JIRA ticket."""
 
-    def __init__(self, name: str = "ActionPlannerAgent"):
-        super().__init__(name=name, version="1.1.0")
+    def __init__(self, name: str = "ActionPlannerAgent", **kwargs):
+        super().__init__(name=name, version="1.1.0", **kwargs)
 
     def _run(self, message: Message) -> Message:
         # Import here to avoid circular import at module load time
@@ -38,9 +38,9 @@ class ActionPlannerAgent(BaseAgent):
                     priority=priority,
                 )
             except Exception as exc:
-                self.logger.warning(f"JIRA ticket creation failed: {exc}")
+                self._logger.warning(f"JIRA ticket creation failed: {exc}")
 
-        self.logger.info(
+        self._logger.info(
             f"[{self.name}] Plan ready | priority={priority} | ticket={ticket_url}"
         )
 

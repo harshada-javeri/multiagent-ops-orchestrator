@@ -1,31 +1,19 @@
 """
 ExecutionAgent — final pipeline stage; executes approved remediation actions.
 
-Responsibilities
-----------------
-- Receive ActionPlannerAgent output (plan, confidence, priority)
-- Decide whether to auto-execute based on confidence + priority thresholds
-- Dispatch each action to the appropriate executor strategy
-- Fetch post-execution Grafana metrics snapshot
-- Always produce a fully structured output Message — even on dry-run
+Ticket creation priority:
+  1. JIRA  — when JIRA_URL + JIRA_USER + JIRA_TOKEN are all set.
+  2. GitHub Issues — fallback when JIRA is not configured
+                     (requires GITHUB_TOKEN + GITHUB_REPO).
+  3. No ticket  — if neither is configured (logs a warning).
 
 Safe defaults
 -------------
-- dry_run=True  by default — NEVER auto-executes in development
-- Actions require confidence >= 0.90 AND priority == "HIGH" to auto-run
-- All other cases produce execution_results with status "pending_approval"
-
-ExecutionAgent — executes approved remediation actions.
-
-Sits after ActionPlannerAgent in the workflow graph.
-In production, extend _execute_action() with real automation
-(Ansible, kubectl rollback, Jenkins retrigger, etc.).
-
-Safe by default: dry_run=True means no auto-execution.
-Auto-execution only triggers when:
-  - dry_run=False  AND
-  - confidence >= AUTO_EXECUTE_THRESHOLD (0.90)
+- dry_run=True  by default — NEVER auto-executes in development.
+- Actions require confidence >= 0.90 AND priority == "HIGH" to auto-run.
 """
+from typing import ClassVar
+
 from adk import Message
 from agents.base_agent import BaseAgent
 
@@ -33,21 +21,26 @@ from agents.base_agent import BaseAgent
 class ExecutionAgent(BaseAgent):
     """Executes or queues remediation actions from ActionPlannerAgent."""
 
-    AUTO_EXECUTE_THRESHOLD: float = 0.90
+    AUTO_EXECUTE_THRESHOLD: ClassVar[float] = 0.90
+    dry_run: bool = True
 
-    def __init__(self, name: str = "ExecutionAgent", dry_run: bool = True):
-        super().__init__(name=name, version="1.0.0")
-        self.dry_run = dry_run
+    def __init__(self, name: str = "ExecutionAgent", dry_run: bool = True, **kwargs):
+        super().__init__(name=name, version="1.1.0", dry_run=dry_run, **kwargs)
 
     def _run(self, message: Message) -> Message:
         from tools.tool_registry import ToolRegistry
 
         plan_data: dict = message.content
-        plan: list = plan_data.get("plan", [])
+        plan: list      = plan_data.get("plan", [])
         confidence: float = plan_data.get("confidence", 0.0)
-        auto_executed: bool = False
-        execution_results: list[dict] = []
+        priority: str   = plan_data.get("priority", "LOW")
+        analysis: str   = plan_data.get("analysis", "")
+        failed_tests: list = plan_data.get("failed_tests", [])
 
+        auto_executed: bool      = False
+        execution_results: list  = []
+
+        # ── Auto-execution gate ───────────────────────────────────────────
         should_execute = (
             not self.dry_run and confidence >= self.AUTO_EXECUTE_THRESHOLD
         )
@@ -64,19 +57,31 @@ class ExecutionAgent(BaseAgent):
                 if self.dry_run
                 else f"confidence {confidence:.2f} < threshold {self.AUTO_EXECUTE_THRESHOLD}"
             )
-            self.logger.info(f"[{self.name}] Skipping execution ({reason})")
+            self._logger.info(f"[{self.name}] Skipping execution ({reason})")
             execution_results = [
                 {"action": a, "status": "pending_approval"} for a in plan
             ]
 
-        # Optional: fetch post-execution Grafana snapshot
+        # ── Ticket creation (JIRA → GitHub Issues fallback) ───────────────
+        ticket_url = plan_data.get("ticket_url", "")
+        ticket_source = plan_data.get("ticket_source", "none")
+
+        if not ticket_url:
+            ticket_url, ticket_source = self._create_ticket(
+                failed_tests=failed_tests,
+                analysis=analysis,
+                plan=plan,
+                priority=priority,
+            )
+
+        # ── Post-execution Grafana snapshot (only when actually executed) ─
         metrics_snapshot: dict = {}
         grafana = ToolRegistry.get("grafana")
         if grafana and auto_executed:
             try:
                 metrics_snapshot = grafana.fetch_metrics()
             except Exception as exc:
-                self.logger.warning(f"Grafana metrics fetch failed: {exc}")
+                self._logger.warning(f"Grafana metrics fetch failed: {exc}")
 
         return Message(
             sender=self.name,
@@ -86,13 +91,93 @@ class ExecutionAgent(BaseAgent):
                 "execution_results": execution_results,
                 "auto_executed": auto_executed,
                 "metrics_snapshot": metrics_snapshot,
+                "ticket_url": ticket_url,
+                "ticket": ticket_url,          # backward-compat alias
+                "ticket_source": ticket_source,
             },
         )
 
+    # ------------------------------------------------------------------
+    # Ticket creation with JIRA → GitHub fallback
+    # ------------------------------------------------------------------
+
+    def _create_ticket(
+        self,
+        failed_tests: list,
+        analysis: str,
+        plan: list,
+        priority: str,
+    ) -> tuple[str, str]:
+        """
+        Attempt to create a ticket.
+
+        Returns:
+            (ticket_url, source) where source is "jira", "github", or "none".
+
+        Priority:
+            1. JIRA  — when url + user + token are all set.
+            2. GitHub Issues — fallback when JIRA is absent.
+            3. ("", "none") — if neither is configured.
+        """
+        import os
+        from tools.tool_registry import ToolRegistry
+
+        title   = f"CI Failure: {', '.join(failed_tests[:3]) or 'unknown'}"
+        plan_md = "\n".join(f"- {step}" for step in plan)
+        body    = (
+            f"## Root Cause Analysis\n\n{analysis}\n\n"
+            f"## Failed Tests\n\n"
+            + "\n".join(f"- `{t}`" for t in failed_tests)
+            + f"\n\n## Remediation Plan\n\n{plan_md}\n\n"
+            f"---\n*Auto-generated by QAOps Multi-Agent Orchestrator*"
+        )
+
+        # ── 1. Try JIRA ───────────────────────────────────────────────────
+        jira_configured = all([
+            os.getenv("JIRA_URL"),
+            os.getenv("JIRA_USER"),
+            os.getenv("JIRA_TOKEN"),
+        ])
+        if jira_configured:
+            jira = ToolRegistry.get("jira")
+            if jira:
+                try:
+                    url = jira.create_ticket(
+                        summary=title,
+                        description=body,
+                        priority=priority,
+                    )
+                    self._logger.info(f"[{self.name}] JIRA ticket: {url}")
+                    return url, "jira"
+                except Exception as exc:
+                    self._logger.warning(f"JIRA ticket failed, trying GitHub: {exc}")
+
+        # ── 2. Fallback to GitHub Issues ──────────────────────────────────
+        github_configured = bool(
+            os.getenv("GITHUB_TOKEN") and os.getenv("GITHUB_REPO")
+        )
+        if github_configured:
+            github = ToolRegistry.get("github")
+            if github:
+                try:
+                    url = github.create_issue(
+                        title=title,
+                        body=body,
+                        labels=["bug", "ci-failure", "auto-generated"],
+                    )
+                    self._logger.info(f"[{self.name}] GitHub Issue: {url}")
+                    return url, "github"
+                except Exception as exc:
+                    self._logger.warning(f"GitHub Issue creation failed: {exc}")
+
+        # ── 3. Neither configured ─────────────────────────────────────────
+        self._logger.warning(
+            f"[{self.name}] No ticket backend configured "
+            "(set JIRA_* or GITHUB_TOKEN + GITHUB_REPO)"
+        )
+        return "", "none"
+
     def _execute_action(self, action: str) -> dict:
-        """
-        Dispatch a single remediation action.
-        Override or extend this for real automation integrations.
-        """
-        self.logger.info(f"[{self.name}] Dispatching: {action}")
+        """Dispatch a single remediation action. Extend for real automation."""
+        self._logger.info(f"[{self.name}] Dispatching: {action}")
         return {"action": action, "status": "executed", "output": "OK"}

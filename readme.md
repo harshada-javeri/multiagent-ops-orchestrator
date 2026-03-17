@@ -280,3 +280,114 @@ This project is licensed under the MIT License — see LICENSE file for details.
 - **Email:** harshada.javeri@gmail.com
 
 ---
+## Demo Mode (GitHub Integration)
+
+When **Jenkins** and **JIRA** are not configured, the system automatically
+switches to **GitHub Actions + GitHub Issues** as the data and ticketing backend.
+No infrastructure setup is required — only a GitHub token and repository name.
+
+### How It Works
+
+```
+GitHub Actions logs
+       │
+       ▼
+EventIngestionLayer  ←── source: "github_actions"
+       │                 auto-fetches logs via GitHubTool
+       ▼
+TestDiagnosticsAgent  (parses failures)
+       │
+       ▼
+RootCauseAnalyzerAgent  (Gemini LLM analysis)
+       │
+       ▼
+ActionPlannerAgent  (builds remediation plan)
+       │
+       ▼
+ExecutionAgent  ──► JIRA (if configured)
+                └─► GitHub Issue (fallback)
+```
+### Quick Demo Setup
+
+**1. Set environment variables:**
+
+```bash
+export GOOGLE_API_KEY=your-gemini-key
+export GITHUB_TOKEN=ghp_yourpersonalaccesstoken
+export GITHUB_REPO=owner/repo-with-actions
+```
+
+**2. Run the demo script:**
+
+```bash
+# With live GitHub Actions logs:
+python scripts/simulate_github_ci_event.py --repo owner/repo --workflow ci.yml
+
+# With a specific workflow:
+python scripts/simulate_github_ci_event.py --workflow build.yml
+
+# With bundled sample logs (no token needed):
+python scripts/simulate_github_ci_event.py --sample
+```
+
+**3. Or trigger via the API:**
+
+```bash
+curl -X POST http://localhost:9696/events \
+  -H "Content-Type: application/json" \
+  -d '{
+    "source": "github_actions",
+    "repo":   "owner/repo",
+    "workflow": "ci.yml"
+  }'
+```
+### Quick Demo Setup
+
+**1. Set environment variables:**
+
+```bash
+export GOOGLE_API_KEY=your-gemini-key
+export GITHUB_TOKEN=ghp_yourpersonalaccesstoken
+export GITHUB_REPO=owner/repo-with-actions
+```
+
+**2. Run the demo script:**
+
+```bash
+# With live GitHub Actions logs:
+python scripts/simulate_github_ci_event.py --repo owner/repo --workflow ci.yml
+
+# With a specific workflow:
+python scripts/simulate_github_ci_event.py --workflow build.yml
+
+# With bundled sample logs (no token needed):
+python scripts/simulate_github_ci_event.py --sample
+```
+
+**3. Or trigger via the API:**
+
+```bash
+curl -X POST http://localhost:9696/events \
+  -H "Content-Type: application/json" \
+  -d '{
+    "source": "github_actions",
+    "repo":   "owner/repo",
+    "workflow": "ci.yml"
+  }'
+```
+### Ticket Fallback Priority
+
+| JIRA configured | GitHub configured | Result               |
+|-----------------|-------------------|----------------------|
+| ✅ Yes          | any               | JIRA ticket created  |
+| ❌ No           | ✅ Yes            | GitHub Issue created |
+| ❌ No           | ❌ No             | No ticket (logged)   |
+
+### Required GitHub Token Scopes
+
+| Permission         | Why needed                        |
+|--------------------|-----------------------------------|
+| `repo`             | Read Actions logs, create Issues  |
+| `actions:read`     | Download workflow run logs        |
+
+Create a token at: **GitHub → Settings → Developer Settings → Personal Access Tokens → Fine-grained tokens**
