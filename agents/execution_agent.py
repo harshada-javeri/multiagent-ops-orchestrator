@@ -135,8 +135,8 @@ class ExecutionAgent(BaseAgent):
         # ── 1. Try JIRA ───────────────────────────────────────────────────
         jira_configured = all([
             os.getenv("JIRA_URL"),
-            os.getenv("JIRA_USER"),
-            os.getenv("JIRA_TOKEN"),
+            os.getenv("JIRA_USERNAME") or os.getenv("JIRA_USER"),
+            os.getenv("JIRA_API_TOKEN") or os.getenv("JIRA_TOKEN"),
         ])
         if jira_configured:
             jira = ToolRegistry.get("jira")

@@ -1,14 +1,14 @@
 [{
     "name": "google.adk.agents.base_agent.BaseAgent.run_async",
     "context": {
-        "trace_id": "68de02e6ed58cbb7a4fbaf0c73c0351e",
-        "span_id": "0f37f1fa1ffc6a9b",
+        "trace_id": "40d2076ef1e2eb7bc2a7687c4bf0fcd4",
+        "span_id": "4fd6af7f94edc083",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "0f22e391a8132aa8",
-    "start_time": "2026-03-13T02:56:34.977874Z",
-    "end_time": "2026-03-13T02:56:34.979095Z",
+    "parent_id": "60aa5b694668311e",
+    "start_time": "2026-03-18T03:46:15.300209Z",
+    "end_time": "2026-03-18T03:46:15.301238Z",
     "status": {
         "status_code": "OK"
     },
@@ -20,18 +20,18 @@
         "entity.1.type": "agent.adk",
         "entity.1.name": "TestDiagnosticsAgent",
         "entity.1.from_agent": "qaops_pipeline",
-        "entity.1.from_agent_span_id": "0f22e391a8132aa8",
+        "entity.1.from_agent_span_id": "60aa5b694668311e",
         "span.type": "agentic.invocation",
-        "scope.agentic.session": "5bee62fa-d8dd-43c1-b9b0-f337246b7f23",
-        "scope.agentic.turn": "9f33d48b3906de839582344c71a9f45f",
-        "scope.agentic.invocation": "9c1b1c5bd8d292a0251daf196fcaaa79",
+        "scope.agentic.session": "46c3786c-3e15-45fc-94d4-618f9115ab41",
+        "scope.agentic.turn": "9996d74c1e6395d9b75567942cac1965",
+        "scope.agentic.invocation": "26c1c6a388f3ba1aba2f1d548eef219b",
         "entity.count": 1,
         "span.subtype": "content_processing"
     },
     "events": [
         {
             "name": "data.input",
-            "timestamp": "2026-03-13T02:56:34.977947Z",
+            "timestamp": "2026-03-18T03:46:15.300259Z",
             "attributes": {
                 "input": [
                     "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
@@ -40,7 +40,7 @@
         },
         {
             "name": "data.output",
-            "timestamp": "2026-03-13T02:56:34.979077Z",
+            "timestamp": "2026-03-18T03:46:15.301223Z",
             "attributes": {
                 "response": "{\"failed_tests\": [\"testUserAuthentication\", \"testCreateUser\"], \"error_categories\": [\"assertion\", \"connection_error\"], \"summary\": \"2 test(s) failed: testUserAuthentication, testCreateUser\", \"raw_logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}"
             }
@@ -57,14 +57,14 @@
 ,{
     "name": "google.genai.models.Models.generate_content",
     "context": {
-        "trace_id": "68de02e6ed58cbb7a4fbaf0c73c0351e",
-        "span_id": "93f8fb3876c85965",
+        "trace_id": "40d2076ef1e2eb7bc2a7687c4bf0fcd4",
+        "span_id": "46856947e29f1e4b",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "bfac31ddedb5819c",
-    "start_time": "2026-03-13T02:56:34.999921Z",
-    "end_time": "2026-03-13T02:56:37.017496Z",
+    "parent_id": "1929e7eddb02ac94",
+    "start_time": "2026-03-18T03:46:15.318470Z",
+    "end_time": "2026-03-18T03:46:16.452742Z",
     "status": {
         "status_code": "OK"
     },
@@ -79,15 +79,15 @@
         "entity.2.name": "gemini-2.5-flash-lite",
         "entity.2.type": "model.llm.gemini-2.5-flash-lite",
         "span.type": "inference",
-        "scope.agentic.session": "5bee62fa-d8dd-43c1-b9b0-f337246b7f23",
-        "scope.agentic.turn": "9f33d48b3906de839582344c71a9f45f",
-        "scope.agentic.invocation": "bc01ee2e7456ae17fe66f4eb04c12414",
+        "scope.agentic.session": "46c3786c-3e15-45fc-94d4-618f9115ab41",
+        "scope.agentic.turn": "9996d74c1e6395d9b75567942cac1965",
+        "scope.agentic.invocation": "20a723a95d6e7c414bbf536c74c6b217",
         "entity.count": 2
     },
     "events": [
         {
             "name": "data.input",
-            "timestamp": "2026-03-13T02:56:35.000051Z",
+            "timestamp": "2026-03-18T03:46:15.318549Z",
             "attributes": {
                 "input": [
                     "{\"user\": \"You are a senior QA engineer. Analyse the following CI/CD failure:\\n\\nFailed Tests: ['testUserAuthentication', 'testCreateUser']\\nError Categories: ['assertion', 'connection_error']\\nHistorical Context: {}\\nLog snippet:\\n[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\\n\\nReturn: root_causes (list), brief analysis (str), confidence 0-1.\"}"
@@ -96,18 +96,18 @@
         },
         {
             "name": "data.output",
-            "timestamp": "2026-03-13T02:56:37.017242Z",
+            "timestamp": "2026-03-18T03:46:16.452684Z",
             "attributes": {
-                "response": "{\"model\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Configuration issue with the test environment or service dependency for `testCreateUser`.\\\",\\n    \\\"Potential bug or environmental issue affecting user authentication logic in `testUserAuthentication`.\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD pipeline failed with two critical tests: `testUserAuthentication` and `testCreateUser`. `testUserAuthentication` failed due to an assertion error, indicating the expected outcome (true) was not met (false), suggesting a potential bug in the authentication logic or an issue with the test setup. `testCreateUser` encountered a `java.net.ConnectException: Connection refused: connect`, which strongly suggests a network or service availability problem. The test is unable to connect to the target service (likely the user management API) to create a user. This could be due to the service not running, being overloaded, or a misconfiguration in the test environment's network settings. Given the connection error on `testCreateUser`, it's possible that the failure of `testUserAuthentication` is a secondary effect of the user service not being properly initialized or accessible for authentication tests, or it might be an independent issue.\\\",\\n  \\\"confidence\\\": 0.95\\n}\\n```\"}"
+                "response": "{\"model\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Database connection issue\\\",\\n    \\\"Authentication service not reachable\\\",\\n    \\\"API endpoint for user creation is unavailable\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD pipeline failed due to two primary issues: testUserAuthentication failed with an assertion error (expected true, found false), indicating a potential problem with the login logic or the state of the system it's interacting with. More critically, testCreateUser failed with a 'Connection refused' error, strongly suggesting that the application's API or a dependent service (like the database or authentication service) is not running or is not accessible from the test environment. The assertion error in testUserAuthentication might be a symptom of the underlying connectivity issues affecting the authentication process, or it could be a separate, though related, bug. The connection error is the more immediate and severe problem that needs to be addressed first to restore basic functionality.\\\",\\n  \\\"confidence\\\": 0.95\\n}\\n```\"}"
             }
         },
         {
             "name": "metadata",
-            "timestamp": "2026-03-13T02:56:37.017343Z",
+            "timestamp": "2026-03-18T03:46:16.452714Z",
             "attributes": {
-                "completion_tokens": 265,
+                "completion_tokens": 211,
                 "prompt_tokens": 571,
-                "total_tokens": 836,
+                "total_tokens": 782,
                 "finish_reason": "STOP",
                 "finish_type": "success"
             }
@@ -124,14 +124,14 @@
 ,{
     "name": "google.adk.agents.base_agent.BaseAgent.run_async",
     "context": {
-        "trace_id": "68de02e6ed58cbb7a4fbaf0c73c0351e",
-        "span_id": "bfac31ddedb5819c",
+        "trace_id": "40d2076ef1e2eb7bc2a7687c4bf0fcd4",
+        "span_id": "1929e7eddb02ac94",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "0f22e391a8132aa8",
-    "start_time": "2026-03-13T02:56:34.979282Z",
-    "end_time": "2026-03-13T02:56:37.019884Z",
+    "parent_id": "60aa5b694668311e",
+    "start_time": "2026-03-18T03:46:15.301392Z",
+    "end_time": "2026-03-18T03:46:16.453350Z",
     "status": {
         "status_code": "OK"
     },
@@ -143,18 +143,18 @@
         "entity.1.type": "agent.adk",
         "entity.1.name": "RootCauseAnalyzerAgent",
         "entity.1.from_agent": "qaops_pipeline",
-        "entity.1.from_agent_span_id": "0f22e391a8132aa8",
+        "entity.1.from_agent_span_id": "60aa5b694668311e",
         "span.type": "agentic.invocation",
-        "scope.agentic.session": "5bee62fa-d8dd-43c1-b9b0-f337246b7f23",
-        "scope.agentic.turn": "9f33d48b3906de839582344c71a9f45f",
-        "scope.agentic.invocation": "bc01ee2e7456ae17fe66f4eb04c12414",
+        "scope.agentic.session": "46c3786c-3e15-45fc-94d4-618f9115ab41",
+        "scope.agentic.turn": "9996d74c1e6395d9b75567942cac1965",
+        "scope.agentic.invocation": "20a723a95d6e7c414bbf536c74c6b217",
         "entity.count": 1,
         "span.subtype": "content_processing"
     },
     "events": [
         {
             "name": "data.input",
-            "timestamp": "2026-03-13T02:56:34.979332Z",
+            "timestamp": "2026-03-18T03:46:15.301436Z",
             "attributes": {
                 "input": [
                     "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
@@ -163,9 +163,9 @@
         },
         {
             "name": "data.output",
-            "timestamp": "2026-03-13T02:56:37.019838Z",
+            "timestamp": "2026-03-18T03:46:16.453336Z",
             "attributes": {
-                "response": "{\"analysis\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Configuration issue with the test environment or service dependency for `testCreateUser`.\\\",\\n    \\\"Potential bug or environmental issue affecting user authentication logic in `testUserAuthentication`.\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD pipeline failed with two critical tests: `testUserAuthentication` and `testCreateUser`. `testUserAuthentication` failed due to an assertion error, indicating the expected outcome (true) was not met (false), suggesting a potential bug in the authentication logic or an issue with the test setup. `testCreateUser` encountered a `java.net.ConnectException: Connection refused: connect`, which strongly suggests a network or service availability problem. The test is unable to connect to the target service (likely the user management API) to create a user. This could be due to the service not running, being overloaded, or a misconfiguration in the test environment's network settings. Given the connection error on `testCreateUser`, it's possible that the failure of `testUserAuthentication` is a secondary effect of the user service not being properly initialized or accessible for authentication tests, or it might be an independent issue.\\\",\\n  \\\"confidence\\\": 0.95\\n}\\n```\", \"root_causes\": [\"testUserAuthentication\", \"testCreateUser\"], \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"memory_context\": {}}"
+                "response": "{\"analysis\": \"```json\\n{\\n  \\\"root_causes\\\": [\\n    \\\"Database connection issue\\\",\\n    \\\"Authentication service not reachable\\\",\\n    \\\"API endpoint for user creation is unavailable\\\"\\n  ],\\n  \\\"brief_analysis\\\": \\\"The CI/CD pipeline failed due to two primary issues: testUserAuthentication failed with an assertion error (expected true, found false), indicating a potential problem with the login logic or the state of the system it's interacting with. More critically, testCreateUser failed with a 'Connection refused' error, strongly suggesting that the application's API or a dependent service (like the database or authentication service) is not running or is not accessible from the test environment. The assertion error in testUserAuthentication might be a symptom of the underlying connectivity issues affecting the authentication process, or it could be a separate, though related, bug. The connection error is the more immediate and severe problem that needs to be addressed first to restore basic functionality.\\\",\\n  \\\"confidence\\\": 0.95\\n}\\n```\", \"root_causes\": [\"testUserAuthentication\", \"testCreateUser\"], \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"memory_context\": {}}"
             }
         }
     ],
@@ -180,14 +180,14 @@
 ,{
     "name": "google.adk.agents.base_agent.BaseAgent.run_async",
     "context": {
-        "trace_id": "68de02e6ed58cbb7a4fbaf0c73c0351e",
-        "span_id": "19c79a067f01b6b2",
+        "trace_id": "40d2076ef1e2eb7bc2a7687c4bf0fcd4",
+        "span_id": "944620bd09ea7b28",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "0f22e391a8132aa8",
-    "start_time": "2026-03-13T02:56:37.020880Z",
-    "end_time": "2026-03-13T02:56:38.292969Z",
+    "parent_id": "60aa5b694668311e",
+    "start_time": "2026-03-18T03:46:16.453877Z",
+    "end_time": "2026-03-18T03:46:17.813006Z",
     "status": {
         "status_code": "OK"
     },
@@ -199,18 +199,18 @@
         "entity.1.type": "agent.adk",
         "entity.1.name": "ActionPlannerAgent",
         "entity.1.from_agent": "qaops_pipeline",
-        "entity.1.from_agent_span_id": "0f22e391a8132aa8",
+        "entity.1.from_agent_span_id": "60aa5b694668311e",
         "span.type": "agentic.invocation",
-        "scope.agentic.session": "5bee62fa-d8dd-43c1-b9b0-f337246b7f23",
-        "scope.agentic.turn": "9f33d48b3906de839582344c71a9f45f",
-        "scope.agentic.invocation": "7c2a1980aae0285ebd03654fc335b743",
+        "scope.agentic.session": "46c3786c-3e15-45fc-94d4-618f9115ab41",
+        "scope.agentic.turn": "9996d74c1e6395d9b75567942cac1965",
+        "scope.agentic.invocation": "419eb4eae11aa8a485a6ca43d300b541",
         "entity.count": 1,
         "span.subtype": "content_processing"
     },
     "events": [
         {
             "name": "data.input",
-            "timestamp": "2026-03-13T02:56:37.021060Z",
+            "timestamp": "2026-03-18T03:46:16.454032Z",
             "attributes": {
                 "input": [
                     "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
@@ -219,9 +219,9 @@
         },
         {
             "name": "data.output",
-            "timestamp": "2026-03-13T02:56:38.292943Z",
+            "timestamp": "2026-03-18T03:46:17.812964Z",
             "attributes": {
-                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"]}"
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"https://cicdagent.atlassian.net/browse/SCRUM-12\", \"ticket\": \"https://cicdagent.atlassian.net/browse/SCRUM-12\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"]}"
             }
         }
     ],
@@ -236,14 +236,14 @@
 ,{
     "name": "google.adk.agents.base_agent.BaseAgent.run_async",
     "context": {
-        "trace_id": "68de02e6ed58cbb7a4fbaf0c73c0351e",
-        "span_id": "587f51af17b6df20",
+        "trace_id": "40d2076ef1e2eb7bc2a7687c4bf0fcd4",
+        "span_id": "b9a5df2faac117f7",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "0f22e391a8132aa8",
-    "start_time": "2026-03-13T02:56:38.293518Z",
-    "end_time": "2026-03-13T02:56:38.294288Z",
+    "parent_id": "60aa5b694668311e",
+    "start_time": "2026-03-18T03:46:17.813806Z",
+    "end_time": "2026-03-18T03:46:17.814389Z",
     "status": {
         "status_code": "OK"
     },
@@ -255,18 +255,18 @@
         "entity.1.type": "agent.adk",
         "entity.1.name": "ExecutionAgent",
         "entity.1.from_agent": "qaops_pipeline",
-        "entity.1.from_agent_span_id": "0f22e391a8132aa8",
+        "entity.1.from_agent_span_id": "60aa5b694668311e",
         "span.type": "agentic.invocation",
-        "scope.agentic.session": "5bee62fa-d8dd-43c1-b9b0-f337246b7f23",
-        "scope.agentic.turn": "9f33d48b3906de839582344c71a9f45f",
-        "scope.agentic.invocation": "3dd8f884bfc37fdf1638cc3a1fe2b4d4",
+        "scope.agentic.session": "46c3786c-3e15-45fc-94d4-618f9115ab41",
+        "scope.agentic.turn": "9996d74c1e6395d9b75567942cac1965",
+        "scope.agentic.invocation": "36bcd20b46f238e269282d3b10b77b21",
         "entity.count": 1,
         "span.subtype": "content_processing"
     },
     "events": [
         {
             "name": "data.input",
-            "timestamp": "2026-03-13T02:56:38.293721Z",
+            "timestamp": "2026-03-18T03:46:17.813999Z",
             "attributes": {
                 "input": [
                     "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
@@ -275,9 +275,9 @@
         },
         {
             "name": "data.output",
-            "timestamp": "2026-03-13T02:56:38.294270Z",
+            "timestamp": "2026-03-18T03:46:17.814377Z",
             "attributes": {
-                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"execution_results\": [{\"action\": \"Action 1: Investigate and fix 'testUserAuthentication'\", \"status\": \"pending_approval\"}, {\"action\": \"Action 2: Investigate and fix 'testCreateUser'\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"none\"}"
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"https://cicdagent.atlassian.net/browse/SCRUM-12\", \"ticket\": \"https://cicdagent.atlassian.net/browse/SCRUM-12\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"execution_results\": [{\"action\": \"Action 1: Investigate and fix 'testUserAuthentication'\", \"status\": \"pending_approval\"}, {\"action\": \"Action 2: Investigate and fix 'testCreateUser'\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"none\"}"
             }
         }
     ],
@@ -292,14 +292,14 @@
 ,{
     "name": "google.adk.agents.base_agent.BaseAgent.run_async",
     "context": {
-        "trace_id": "68de02e6ed58cbb7a4fbaf0c73c0351e",
-        "span_id": "0f22e391a8132aa8",
+        "trace_id": "40d2076ef1e2eb7bc2a7687c4bf0fcd4",
+        "span_id": "60aa5b694668311e",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "450cdc2b1972c81f",
-    "start_time": "2026-03-13T02:56:34.976955Z",
-    "end_time": "2026-03-13T02:56:38.294518Z",
+    "parent_id": "31782d4d949f9640",
+    "start_time": "2026-03-18T03:46:15.299517Z",
+    "end_time": "2026-03-18T03:46:17.814459Z",
     "status": {
         "status_code": "OK"
     },
@@ -311,9 +311,9 @@
         "entity.1.type": "agent.adk",
         "entity.1.name": "qaops_pipeline",
         "span.type": "agentic.invocation",
-        "scope.agentic.session": "5bee62fa-d8dd-43c1-b9b0-f337246b7f23",
-        "scope.agentic.turn": "9f33d48b3906de839582344c71a9f45f",
-        "scope.agentic.invocation": "fcbd05d4c171d53bc8dfa530bcc92306",
+        "scope.agentic.session": "46c3786c-3e15-45fc-94d4-618f9115ab41",
+        "scope.agentic.turn": "9996d74c1e6395d9b75567942cac1965",
+        "scope.agentic.invocation": "82f45a08ca66dac260bdabb68711bbcd",
         "entity.count": 1,
         "span.subtype": "routing"
     },
@@ -329,14 +329,14 @@
 ,{
     "name": "google.adk.runners.Runner.run_async",
     "context": {
-        "trace_id": "68de02e6ed58cbb7a4fbaf0c73c0351e",
-        "span_id": "450cdc2b1972c81f",
+        "trace_id": "40d2076ef1e2eb7bc2a7687c4bf0fcd4",
+        "span_id": "31782d4d949f9640",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "66269b49bb407343",
-    "start_time": "2026-03-13T02:56:34.975131Z",
-    "end_time": "2026-03-13T02:56:38.294667Z",
+    "parent_id": "a837838d331e7d35",
+    "start_time": "2026-03-18T03:46:15.297984Z",
+    "end_time": "2026-03-18T03:46:17.814545Z",
     "status": {
         "status_code": "OK"
     },
@@ -347,15 +347,15 @@
         "workflow.name": "multiagent-orchestrator",
         "entity.1.type": "agent.adk",
         "span.type": "agentic.turn",
-        "scope.agentic.session": "5bee62fa-d8dd-43c1-b9b0-f337246b7f23",
-        "scope.agentic.turn": "9f33d48b3906de839582344c71a9f45f",
+        "scope.agentic.session": "46c3786c-3e15-45fc-94d4-618f9115ab41",
+        "scope.agentic.turn": "9996d74c1e6395d9b75567942cac1965",
         "entity.count": 1,
         "span.subtype": "turn"
     },
     "events": [
         {
             "name": "data.input",
-            "timestamp": "2026-03-13T02:56:34.975186Z",
+            "timestamp": "2026-03-18T03:46:15.298034Z",
             "attributes": {
                 "input": [
                     "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
@@ -364,9 +364,9 @@
         },
         {
             "name": "data.output",
-            "timestamp": "2026-03-13T02:56:38.294656Z",
+            "timestamp": "2026-03-18T03:46:17.814535Z",
             "attributes": {
-                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"https://mock-jira.local/browse/QA-ERR\", \"ticket\": \"https://mock-jira.local/browse/QA-ERR\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"execution_results\": [{\"action\": \"Action 1: Investigate and fix 'testUserAuthentication'\", \"status\": \"pending_approval\"}, {\"action\": \"Action 2: Investigate and fix 'testCreateUser'\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"none\"}"
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"https://cicdagent.atlassian.net/browse/SCRUM-12\", \"ticket\": \"https://cicdagent.atlassian.net/browse/SCRUM-12\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"execution_results\": [{\"action\": \"Action 1: Investigate and fix 'testUserAuthentication'\", \"status\": \"pending_approval\"}, {\"action\": \"Action 2: Investigate and fix 'testCreateUser'\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"none\"}"
             }
         }
     ],
@@ -381,14 +381,14 @@
 ,{
     "name": "workflow",
     "context": {
-        "trace_id": "68de02e6ed58cbb7a4fbaf0c73c0351e",
-        "span_id": "66269b49bb407343",
+        "trace_id": "40d2076ef1e2eb7bc2a7687c4bf0fcd4",
+        "span_id": "a837838d331e7d35",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
     "parent_id": null,
-    "start_time": "2026-03-13T02:56:34.975043Z",
-    "end_time": "2026-03-13T02:56:38.294678Z",
+    "start_time": "2026-03-18T03:46:15.297913Z",
+    "end_time": "2026-03-18T03:46:17.814560Z",
     "status": {
         "status_code": "OK"
     },
@@ -396,8 +396,8 @@
         "monocle_apptrace.version": "0.7.6",
         "monocle_apptrace.language": "python",
         "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/main_orchestrator.py:87",
-        "scope.agentic.session": "5bee62fa-d8dd-43c1-b9b0-f337246b7f23",
-        "scope.agentic.turn": "9f33d48b3906de839582344c71a9f45f",
+        "scope.agentic.session": "46c3786c-3e15-45fc-94d4-618f9115ab41",
+        "scope.agentic.turn": "9996d74c1e6395d9b75567942cac1965",
         "workflow.name": "multiagent-orchestrator",
         "span.type": "workflow",
         "entity.1.name": "multiagent-orchestrator",

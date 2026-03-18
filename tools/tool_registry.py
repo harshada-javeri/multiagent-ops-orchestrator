@@ -58,8 +58,10 @@ class ToolRegistry:
             "jira",
             JiraTool(
                 url=os.getenv("JIRA_URL", ""),
-                user=os.getenv("JIRA_USER", ""),
-                token=os.getenv("JIRA_TOKEN", ""),
+                # Support both naming conventions: JIRA_USERNAME (mcp-atlassian) and JIRA_USER (legacy)
+                user=os.getenv("JIRA_USERNAME", "") or os.getenv("JIRA_USER", ""),
+                # Support both naming conventions: JIRA_API_TOKEN (mcp-atlassian) and JIRA_TOKEN (legacy)
+                token=os.getenv("JIRA_API_TOKEN", "") or os.getenv("JIRA_TOKEN", ""),
             ),
         )
         cls.register(

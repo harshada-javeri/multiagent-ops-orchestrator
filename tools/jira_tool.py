@@ -15,8 +15,10 @@ class JiraTool(BaseTool):
     ) -> None:
         super().__init__(name="JiraTool")
         self.url   = url   or os.getenv("JIRA_URL",   "")
-        self.user  = user  or os.getenv("JIRA_USER",  "")
-        self.token = token or os.getenv("JIRA_TOKEN", "")
+        # Support both naming conventions: JIRA_USERNAME (mcp-atlassian) and JIRA_USER (legacy)
+        self.user  = user  or os.getenv("JIRA_USERNAME", "") or os.getenv("JIRA_USER", "")
+        # Support both naming conventions: JIRA_API_TOKEN (mcp-atlassian) and JIRA_TOKEN (legacy)
+        self.token = token or os.getenv("JIRA_API_TOKEN", "") or os.getenv("JIRA_TOKEN", "")
 
     def health_check(self) -> bool:
         try:
@@ -45,10 +47,10 @@ class JiraTool(BaseTool):
                 return f"https://mock-jira.local/browse/QA-0001"
             payload = {
                 "fields": {
-                    "project": {"key": os.getenv("JIRA_PROJECT", "QA")},
+                    "project": {"key": os.getenv("JIRA_PROJECT", "SCRUM")},
                     "summary": summary,
                     "description": description,
-                    "issuetype": {"name": "Bug"},
+                    "issuetype": {"name": "Task"},
                     "priority": {"name": priority.capitalize()},
                 }
             }
@@ -60,11 +62,11 @@ class JiraTool(BaseTool):
                     timeout=15,
                 )
                 resp.raise_for_status()
-                key = resp.json().get("key", "QA-???")
+                key = resp.json().get("key", "")
                 return f"{self.url}/browse/{key}"
             except Exception as exc:
                 self.logger.error(f"[JiraTool] Ticket creation failed: {exc}")
-                return f"https://mock-jira.local/browse/QA-ERR"
+                return ""
 
 
 # ---------------------------------------------------------------------------
