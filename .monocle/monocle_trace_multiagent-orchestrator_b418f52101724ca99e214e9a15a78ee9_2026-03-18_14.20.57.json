@@ -1,0 +1,238 @@
+[{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "b418f52101724ca99e214e9a15a78ee9",
+        "span_id": "a84ab0603198bb38",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "028b53fa21e749ca",
+    "start_time": "2026-03-18T08:50:25.322057Z",
+    "end_time": "2026-03-18T08:50:55.347043Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "ActionPlannerAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "028b53fa21e749ca",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "ea417beb-246f-444d-aa05-17ce3cf1ec0e",
+        "scope.agentic.turn": "4538f2fb7d99062ea736953e66ac3d7f",
+        "scope.agentic.invocation": "c7cdd22471cfb70dca9cb18639dd58a2",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-18T08:50:25.322306Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-18T08:50:55.346900Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"\", \"ticket\": \"\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"]}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "b418f52101724ca99e214e9a15a78ee9",
+        "span_id": "3ce6db6778f9676c",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "028b53fa21e749ca",
+    "start_time": "2026-03-18T08:50:55.348679Z",
+    "end_time": "2026-03-18T08:51:25.364230Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/agents/sequential_agent.py:77",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "ExecutionAgent",
+        "entity.1.from_agent": "qaops_pipeline",
+        "entity.1.from_agent_span_id": "028b53fa21e749ca",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "ea417beb-246f-444d-aa05-17ce3cf1ec0e",
+        "scope.agentic.turn": "4538f2fb7d99062ea736953e66ac3d7f",
+        "scope.agentic.invocation": "481ac50b30517cee873bd3bd040dd38",
+        "entity.count": 1,
+        "span.subtype": "content_processing"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-18T08:50:55.348960Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-18T08:51:25.364125Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"\", \"ticket\": \"\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"execution_results\": [{\"action\": \"Action 1: Investigate and fix 'testUserAuthentication'\", \"status\": \"pending_approval\"}, {\"action\": \"Action 2: Investigate and fix 'testCreateUser'\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"jira\"}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.agents.base_agent.BaseAgent.run_async",
+    "context": {
+        "trace_id": "b418f52101724ca99e214e9a15a78ee9",
+        "span_id": "028b53fa21e749ca",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "d81ff4ae22b1dbf7",
+    "start_time": "2026-03-18T08:49:55.271726Z",
+    "end_time": "2026-03-18T08:51:25.364601Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/.venv/lib/python3.12/site-packages/google/adk/runners.py:538",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "entity.1.name": "qaops_pipeline",
+        "span.type": "agentic.invocation",
+        "scope.agentic.session": "ea417beb-246f-444d-aa05-17ce3cf1ec0e",
+        "scope.agentic.turn": "4538f2fb7d99062ea736953e66ac3d7f",
+        "scope.agentic.invocation": "3ad384ba5dd0c9bab364f7cdb9998fea",
+        "entity.count": 1,
+        "span.subtype": "routing"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "google.adk.runners.Runner.run_async",
+    "context": {
+        "trace_id": "b418f52101724ca99e214e9a15a78ee9",
+        "span_id": "d81ff4ae22b1dbf7",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "155b94e9b9a8de85",
+    "start_time": "2026-03-18T08:49:55.270086Z",
+    "end_time": "2026-03-18T08:51:25.364964Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/main_orchestrator.py:87",
+        "workflow.name": "multiagent-orchestrator",
+        "entity.1.type": "agent.adk",
+        "span.type": "agentic.turn",
+        "scope.agentic.session": "ea417beb-246f-444d-aa05-17ce3cf1ec0e",
+        "scope.agentic.turn": "4538f2fb7d99062ea736953e66ac3d7f",
+        "entity.count": 1,
+        "span.subtype": "turn"
+    },
+    "events": [
+        {
+            "name": "data.input",
+            "timestamp": "2026-03-18T08:49:55.270138Z",
+            "attributes": {
+                "input": [
+                    "{\"sender\": \"ingress\", \"receiver\": \"TestDiagnosticsAgent\", \"content\": {\"logs\": \"[2025-11-28 10:30:01] INFO: Starting build #123 for project 'WebApp-Main'\\n[2025-11-28 10:30:05] INFO: Checking out code from git repository...\\n[2025-11-28 10:30:10] INFO: Running 'mvn clean install'...\\n[2025-11-28 10:32:15] INFO: Running tests...\\n[2025-11-28 10:32:45] ERROR: Test failed: com.example.tests.TestLogin.testUserAuthentication\\njava.lang.AssertionError: expected [true] but found [false]\\n\\tat org.testng.Assert.fail(Assert.java:96)\\n\\tat org.testng.Assert.failNotEquals(Assert.java:776)\\n\\tat org.testng.Assert.assertTrue(Assert.java:44)\\n\\tat org.testng.Assert.assertTrue(Assert.java:54)\\n\\tat com.example.tests.TestLogin.testUserAuthentication(TestLogin.java:42)\\n[2025-11-28 10:32:46] ERROR: Test failed: com.example.tests.TestAPI.testCreateUser\\njava.net.ConnectException: Connection refused: connect\\n\\tat java.net.PlainSocketImpl.socketConnect(Native Method)\\n\\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)\\n\\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)\\n\\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)\\n\\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\\n\\tat java.net.Socket.connect(Socket.java:589)\\n[2025-11-28 10:33:00] INFO: Build finished with status: FAILURE\\n\"}}"
+                ]
+            }
+        },
+        {
+            "name": "data.output",
+            "timestamp": "2026-03-18T08:51:25.364930Z",
+            "attributes": {
+                "response": "{\"plan\": [\"Action 1: Investigate and fix 'testUserAuthentication'\", \"Action 2: Investigate and fix 'testCreateUser'\"], \"ticket_url\": \"\", \"ticket\": \"\", \"priority\": \"HIGH\", \"confidence\": 0.85, \"error_categories\": [\"assertion\", \"connection_error\"], \"execution_results\": [{\"action\": \"Action 1: Investigate and fix 'testUserAuthentication'\", \"status\": \"pending_approval\"}, {\"action\": \"Action 2: Investigate and fix 'testCreateUser'\", \"status\": \"pending_approval\"}], \"auto_executed\": false, \"metrics_snapshot\": {}, \"ticket_source\": \"jira\"}"
+            }
+        }
+    ],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+,{
+    "name": "workflow",
+    "context": {
+        "trace_id": "b418f52101724ca99e214e9a15a78ee9",
+        "span_id": "155b94e9b9a8de85",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": null,
+    "start_time": "2026-03-18T08:49:55.270008Z",
+    "end_time": "2026-03-18T08:51:25.365008Z",
+    "status": {
+        "status_code": "OK"
+    },
+    "attributes": {
+        "monocle_apptrace.version": "0.7.6",
+        "monocle_apptrace.language": "python",
+        "span_source": "/Users/harshada/Project/multiagent-ops-orchestrator/main_orchestrator.py:87",
+        "scope.agentic.session": "ea417beb-246f-444d-aa05-17ce3cf1ec0e",
+        "scope.agentic.turn": "4538f2fb7d99062ea736953e66ac3d7f",
+        "workflow.name": "multiagent-orchestrator",
+        "span.type": "workflow",
+        "entity.1.name": "multiagent-orchestrator",
+        "entity.1.type": "workflow.generic",
+        "entity.2.type": "app_hosting.generic",
+        "entity.2.name": "generic"
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "service.name": "multiagent-orchestrator"
+        },
+        "schema_url": ""
+    }
+}
+]

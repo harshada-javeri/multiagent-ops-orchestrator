@@ -22,7 +22,8 @@ The QAOps Orchestrator is built as a modular, multi-agent system. Each agent is 
 - **Agents:**  
   - [`agents/test_diagnostics_agent.py`](agents/test_diagnostics_agent.py): Parses CI logs, extracts failed tests and error patterns  
   - [`agents/root_cause_agent.py`](agents/root_cause_agent.py): Performs root-cause analysis using LLM and memory  
-  - [`agents/action_planner_agent.py`](agents/action_planner_agent.py): Generates remediation plans and creates JIRA tickets
+  - [`agents/action_planner_agent.py`](agents/action_planner_agent.py): Generates remediation plans and creates JIRA tickets  
+  - [`agents/execution_agent.py`](agents/execution_agent.py): Executes approved remediation actions and manages ticket lifecycle
 
 - **Tools:**  
   - [`tools/jenkins_tool.py`](tools/jenkins_tool.py): Fetches CI logs from Jenkins  
@@ -41,8 +42,9 @@ The QAOps Orchestrator is built as a modular, multi-agent system. Each agent is 
 1. CI logs are ingested (from Jenkins or as input).
 2. `TestDiagnosticsAgent` parses logs and extracts failure signals.
 3. `RootCauseAnalyzerAgent` analyzes failures, queries memory, and uses LLM for hypotheses.
-4. `ActionPlannerAgent` generates remediation steps and creates JIRA tickets.
-5. Results are returned as structured output and traces are sent to Okahu.
+4. `ActionPlannerAgent` generates remediation steps and creates JIRA tickets (project: [Team Astra / SCRUM](https://cicdagent.atlassian.net/browse/SCRUM-1)).
+5. `ExecutionAgent` executes approved actions (or queues them as `pending_approval`).
+6. Results are returned as structured output and traces are sent to Okahu.
 
 ---
 
@@ -116,15 +118,24 @@ multiagent-ops-orchestrator/
 
 ### 3. ActionPlannerAgent
 - **File:** [`agents/action_planner_agent.py`](agents/action_planner_agent.py)
-- **Role:** Generates remediation plans and creates JIRA tickets.
+- **Role:** Generates remediation plans and creates JIRA tickets in project [Team Astra](https://cicdagent.atlassian.net) (key: `SCRUM`).
 - **Key Method:**  
   ```python
   process(analysis: Message) -> Message
-  # Returns: {"plan": "...", "ticket_url": "...", "priority": "HIGH"}
+  # Returns: {"plan": "...", "ticket_url": "https://cicdagent.atlassian.net/browse/SCRUM-N", "priority": "HIGH"}
+  ```
+
+### 4. ExecutionAgent
+- **File:** [`agents/execution_agent.py`](agents/execution_agent.py)
+- **Role:** Executes approved remediation actions returned by `ActionPlannerAgent`. Actions with confidence ≥ 80% are auto-submitted; others are queued as `pending_approval`.
+- **Key Method:**  
+  ```python
+  process(plan: Message) -> Message
+  # Returns: {"execution_results": [{"action": "...", "status": "pending_approval|executed"}], "auto_executed": bool}
   ```
 
 **Workflow:**  
-Agents are orchestrated in sequence. Each agent receives a `Message` object, processes it, and passes the result to the next agent. The final output includes failed tests, analysis, remediation plan, ticket URL, and confidence score.
+Agents are orchestrated in sequence. Each agent receives a `Message` object, processes it, and passes the result to the next agent. The final output includes failed tests, analysis, remediation plan, JIRA ticket URL, confidence score, and execution results.
 
 ---
 
@@ -226,8 +237,13 @@ print(f"JIRA Ticket: {result.content['ticket']}")
     "Action 2: Increase payment mock response delay to 100ms",
     "Action 3: Increase login timeout to 30s (temporary fix)"
   ],
-  "ticket_url": "https://jira.company.com/browse/QA-1234",
-  "priority": "HIGH"
+  "ticket_url": "https://cicdagent.atlassian.net/browse/SCRUM-12",
+  "priority": "HIGH",
+  "execution_results": [
+    {"action": "Action 1: Investigate and fix 'testUserAuthentication'", "status": "pending_approval"},
+    {"action": "Action 2: Investigate and fix 'testCreateUser'", "status": "pending_approval"}
+  ],
+  "auto_executed": false
 }
 ```
 
@@ -236,11 +252,52 @@ print(f"JIRA Ticket: {result.content['ticket']}")
 ## Observability & Tracing
 
 - Tracing is enabled in all entry points (`predict.py`, `serve.py`, `integrated_orchestrator.py`).
-- Telemetry is initialized via [`observability.py`](observability.py) and sends traces to Okahu.
+- Telemetry is initialized via [`observability.py`](observability.py) using [Monocle](https://github.com/monocle2ai/monocle) SDK v0.7.6 and sends traces to Okahu.
 - To view traces:
   1. Set `OKAHU_API_KEY` in your environment.
   2. Run the application.
-  3. Visit [Okahu Portal](https://portal.okahu.co/en/apps/) and browse discovered components.
+  3. Visit the [Okahu Portal — Multi-Agent QAOps Orchestrator](https://portal.okahu.co/en/apps/multi-agent_qaops_orchestrator_ljbbpt) app.
+
+**Discovered Components (Okahu):**
+
+| Component | Type |
+|---|---|
+| `multiagent-orchestrator` | workflow |
+| `qaops_pipeline` | agent (ADK) |
+| `TestDiagnosticsAgent` | agent (ADK) |
+| `RootCauseAnalyzerAgent` | agent (ADK) |
+| `ActionPlannerAgent` | agent (ADK) |
+| `ExecutionAgent` | agent (ADK) |
+| Gemini gemini-2.5-flash-lite | LLM model |
+| Gemini gemini-1.5-flash / flash-latest | LLM model |
+| OpenAI gpt-4o-mini | LLM model |
+
+---
+
+## Live System Status
+
+> Last updated from Okahu & Jira on 2026-03-18
+
+### Latest Okahu Traces — `multiagent-orchestrator`
+
+| Trace ID | Date (UTC) | Duration | Status |
+|---|---|---|---|
+| `40d2076ef1e2eb7bc2a7687c4bf0fcd4` | 2026-03-18 03:46:15 | 2 517 ms | ✅ success |
+| `c232dde39a7af2013d2f02ca17fa41d3` | 2026-03-18 03:31:41 | 1 731 ms | ❌ error |
+| `7d8e166e634d4e8791d58806f35a7171` | 2026-03-18 02:25:27 | 4 735 ms | ✅ success |
+| `68de02e6ed58cbb7a4fbaf0c73c0351e` | 2026-03-13 02:56:34 | 3 320 ms | ✅ success |
+
+### Recent Jira Tickets — [Team Astra (SCRUM)](https://cicdagent.atlassian.net)
+
+| Ticket | Summary | Priority | Status | Date |
+|---|---|---|---|---|
+| [SCRUM-12](https://cicdagent.atlassian.net/browse/SCRUM-12) | QA Failure: testUserAuthentication, testCreateUser | High | Detected | 2026-03-18 |
+| [SCRUM-11](https://cicdagent.atlassian.net/browse/SCRUM-11) | QA Failure: NullPointerException in testPayment | High | Detected | 2026-03-18 |
+| [SCRUM-10](https://cicdagent.atlassian.net/browse/SCRUM-10) | QA Failure: AssertionError in testUserAuthentication, ConnectException in testCreateUser | High | Detected | 2026-03-18 |
+| [SCRUM-7](https://cicdagent.atlassian.net/browse/SCRUM-7) | Remediation Plan: CI/CD Build #123 FAILURE — testUserAuthentication & testCreateUser | High | Detected | 2026-03-18 |
+| [SCRUM-6](https://cicdagent.atlassian.net/browse/SCRUM-6) | CI/CD Pipeline Execution Stopped Due to Security Issues | High | Detected | 2026-03-18 |
+
+All tickets are auto-generated by `ActionPlannerAgent` (AI Confidence ≥ 80%) and linked to the corresponding Okahu trace ID.
 
 ---
 
